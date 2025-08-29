@@ -1,0 +1,56 @@
+body {
+  background-color: rgb(25, 25, 25);
+  color: white;
+  font-family: Arial;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.move-icon {
+  height: 50px;
+}
+
+.move-button {
+  background-color: transparent;
+  border: 3px solid white;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.result {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.score {
+  margin-top: 60px;
+}
+
+.reset-score-button,
+.auto-play-button {
+  background-color: white;
+  border: none;
+  font-size: 15px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+/* Active (toggled) state for auto-play */
+.auto-play-button.active {
+  background-color: #4caf50; /* green */
+  color: #fff;
+}
+
+/* Flash effect for reset */
+.reset-score-button.flash {
+  background-color: #f44336; /* red */
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
