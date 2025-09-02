@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .js-gaming, .js-music, .js-tech {
+            margin-top: 20px;
+            margin-left: 10px;
+            padding: 7px 13px;
+            background-color: rgb(194, 191, 191);
+            border: none;
+            font-size: large;
+            font-weight: 300;
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .js-gaming.clicked,.js-music.clicked,.js-tech.clicked {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="js-gaming" onclick="response(event)">Gaming</button>
+    <button class="js-tech" onclick="response(event)">tech</button>
+    <button class="js-music" onclick="response(event)">music</button>
+    <script>
+        function response(event){
+            // Remove 'clicked' class from all buttons
+            document.querySelector('.js-gaming').classList.remove('clicked');
+            document.querySelector('.js-tech').classList.remove('clicked');
+            document.querySelector('.js-music').classList.remove('clicked');
+            
+            // Add 'clicked' class to the button that was clicked
+            event.target.classList.add('clicked');
+        }
+    </script>
+</body>
+</html>
