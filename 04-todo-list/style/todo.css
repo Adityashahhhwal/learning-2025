@@ -1,0 +1,111 @@
+/* Main body styling: centers content and sets background */
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background: #f7f7f7;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: 100vh;
+}
+
+/* Container for the todo app */
+.todo-container {
+	background: #fff;
+	padding: 2rem;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	width: 100%;
+	max-width: 400px;
+	margin-top: 40px;
+}
+
+/* Title styling */
+p {
+	font-size: 1.5rem; 
+	font-weight: bold;
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+/* Input fields for task and date */
+input[type="text"], input[type="date"] {
+	padding: 0.5rem;
+	margin-bottom: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 1rem;
+}
+
+/* Add and delete buttons */
+button {
+	padding: 0.5rem 1rem;
+	background: #0078d4;
+	color: #fff;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1rem;
+	margin-bottom: 0.5rem;
+	transition: background 0.2s;
+}
+
+/* Button hover effect */
+button:hover {
+	background: #005fa3;
+}
+
+/* Feedback message styling */
+.js-feedback {
+	font-size: 1rem;
+	min-height: 20px;
+}
+
+/* Task list styling */
+#todo-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Individual task item styling */
+#todo-list li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: #f0f4f8;
+	margin-bottom: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: 6px;
+	font-size: 1rem;
+}
+
+/* Spacing between task name and date */
+#todo-list span {
+	margin-right: 10px;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 600px) {
+	.todo-container {
+		padding: 1rem;
+		max-width: 95vw;
+		margin-top: 20px;
+	}
+	p {
+		font-size: 1.2rem;
+	}
+	input[type="text"], input[type="date"] {
+		font-size: 0.95rem;
+	}
+	button {
+		font-size: 0.95rem;
+	}
+	#todo-list li {
+		font-size: 0.95rem;
+		padding: 0.5rem;
+	}
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do-list</title>
+    <link rel="stylesheet" href="style/todo.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <div class="todo-container">
+        <p>My To-Do List</p> <!-- Title of the to-do list -->
+        <input placeholder="Add a new task" class="js-task-input" type="text" /> <!-- Input for task name -->
+        <input type="date" class="js-due-date-input"> <!-- Input for due date -->
+        <button onclick="addTask()">Add</button> <!-- Button to add a new task -->
+        <div class="js-feedback"></div> <!-- Div to show feedback messages -->
+        <ul id="todo-list"></ul> <!-- Unordered list to display tasks -->
+    </div>
+    <script src="script/todo.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>
