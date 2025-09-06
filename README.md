@@ -25,8 +25,9 @@ Near Term Shift: Introduce backend (Node.js + Express) + data persistence (JSON 
 
 | Project | Layer | Tech | Focus |
 |---------|-------|------|-------|
-| Rock Paper Scissors | Frontend | HTML, CSS, JS | Game logic, DOM updates |
-| (Upcoming) Counter / State Demo | Frontend | JS modules | State & events |
+| [DOM Button Interactions](https://adityashahhhwal.github.io/learning-2025/01-dom/) | Frontend | HTML, CSS, JS | DOM manipulation, event handling, CSS classes |
+| [Simple Calculator](https://adityashahhhwal.github.io/learning-2025/02-calculator/) | Frontend | HTML, CSS, JS | User input, state management, basic math operations |
+| [Rock Paper Scissors](https://adityashahhhwal.github.io/learning-2025/rock-paper-scissors/) | Frontend | HTML, CSS, JS | Game logic, DOM updates, conditional logic |
 | (Upcoming) Form Validation Lab | Frontend | JS, Constraint API | Input handling, UX |
 | (Upcoming) Simple REST API | Backend | Node.js, Express | Routing, JSON responses |
 | (Upcoming) Score Service + Persistence | Backend | Node.js, SQLite/Postgres | CRUD, data modeling |
@@ -113,6 +114,7 @@ scripts/        # helper scripts (e.g., project scaffolding)
 
 ## 9. Continuous Improvement Log
 
+- 2025-09-06: Added DOM interactions project and simple calculator (projects 01-02).  
 - 2025-09-02: Added full‑stack & CS roadmap to README (broadening scope).  
 - 2025-09-02: Added project hub + README revamp.  
 - 2025-09-01: Initial Rock Paper Scissors implementation.
