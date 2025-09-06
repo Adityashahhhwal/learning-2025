@@ -28,6 +28,7 @@ Near Term Shift: Introduce backend (Node.js + Express) + data persistence (JSON 
 | [DOM Button Interactions](https://adityashahhhwal.github.io/learning-2025/01-dom/) | Frontend | HTML, CSS, JS | DOM manipulation, event handling, CSS classes |
 | [Simple Calculator](https://adityashahhhwal.github.io/learning-2025/02-calculator/) | Frontend | HTML, CSS, JS | User input, state management, basic math operations |
 | [Rock Paper Scissors](https://adityashahhhwal.github.io/learning-2025/03-rock-paper-scissors/) | Frontend | HTML, CSS, JS | Game logic, DOM updates, conditional logic |
+| [To-Do List App](https://adityashahhhwal.github.io/learning-2025/04-todo-list/) | Frontend | HTML, CSS, JS | Task management, dynamic list rendering, user feedback |
 | (Upcoming) Form Validation Lab | Frontend | JS, Constraint API | Input handling, UX |
 | (Upcoming) Simple REST API | Backend | Node.js, Express | Routing, JSON responses |
 | (Upcoming) Score Service + Persistence | Backend | Node.js, SQLite/Postgres | CRUD, data modeling |
