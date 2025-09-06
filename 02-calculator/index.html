@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+
+  <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+  <p>
+    <button onclick="addToCalculation('1')">1</button>
+    <button onclick="addToCalculation('2')">2</button>
+    <button onclick="addToCalculation('3')">3</button>
+    <button class="operator" onclick="addToCalculation(' + ')">+</button>
+  </p>
+
+  <p>
+    <button onclick="addToCalculation('4')">4</button>
+    <button onclick="addToCalculation('5')">5</button>
+    <button onclick="addToCalculation('6')">6</button>
+    <button class="operator" onclick="addToCalculation(' - ')">-</button>
+  </p>
+
+  <p>
+    <button onclick="addToCalculation('7')">7</button>
+    <button onclick="addToCalculation('8')">8</button>
+    <button onclick="addToCalculation('9')">9</button>
+    <button class="operator" onclick="addToCalculation(' * ')">*</button>
+  </p>
+
+  <p>
+    <button onclick="addToCalculation('0')">0</button>
+    <button onclick="addToCalculation('.')">.</button>
+    <button class="operator" onclick="addToCalculation(' / ')">/</button>
+    <button class="operator" onclick="calculateResult()">=</button> <!-- Calculate Result -->
+  </p>
+
+  <p>
+    <button class="clear-button" onclick="clearCalculation()">Clear</button>
+  </p>
+  <p id="display"></p>
+
+
+  <script src="script/script.js"></script> <!-- Link to external JS file -->
+</body>
+
+</html>
