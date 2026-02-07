@@ -1,3 +1,6 @@
+import {cart} from '../data/cart.js';
+import {products} from '../data/products.js';
+
 let productHTML = '';
 
 products.forEach((product) =>{
@@ -5,7 +8,7 @@ products.forEach((product) =>{
     <div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
-              src="${product.image}">
+              src="${product.image}"> 
           </div>
 
           <div class="product-name limit-text-to-2-lines">
@@ -41,7 +44,7 @@ products.forEach((product) =>{
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart">
+          <div class="added-to-cart js-added-to-cart" data-product-id="${product.id}">
             <img src="images/icons/checkmark.png">
             Added
           </div>
@@ -52,28 +55,51 @@ products.forEach((product) =>{
         </div>`;
 })
 
+
 document.querySelector('.js-products-grid').innerHTML = productHTML;
 
-document.querySelectorAll('.js-add-to-cart-button').forEach ((button) => {
-    button.addEventListener('click', () => {
-        const productId = button.dataset.productId;
-        const quantitySelector = document.querySelector(`.js-quantity-selector[data-product-id="${productId}"]`);
-        const quantity = Number (quantitySelector.value);
-        const existingItem = cart.find((item) => item.productId === productId);
+// Helper function to calculate total cart quantity
+function updateCartQuantity() {
+    const total = cart.reduce((sum, item) => sum + item.quantity, 0);   // sum = accumulator, item = current value in the array
+    document.querySelector('.js-cart-quantity').textContent = total;
+}
 
-        if (existingItem) {
-            existingItem.quantity += quantity;
-        } else {
-            cart.push({
-                productId,
-                quantity
-            });
+// Helper function to add items to cart
+function addToCart(productId, quantity) {
+    const existing = cart.find(item => item.productId === productId);
+
+    if (existing) existing.quantity += quantity;   // If the product is already in the cart, increase its quantity        
+    else cart.push({ productId, quantity });
+}
+
+// Store timeout IDs for each product
+const addedMessageTimeouts = {};
+
+// Add to cart functionality
+document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
+    button.addEventListener('click', () => {
+        const productId = button.dataset.productId; // Get the product ID from the button's data attribute
+        const quantitySelector = document.querySelector(`.js-quantity-selector[data-product-id="${productId}"]`);
+
+        addToCart(productId, parseInt(quantitySelector.value));
+        updateCartQuantity();
+        
+        const addedMessage = document.querySelector(`.js-added-to-cart[data-product-id="${productId}"]`);
+        addedMessage.style.opacity = 1;
+
+        // Clear previous timeout if it exists
+        if (addedMessageTimeouts[productId]) {
+            clearTimeout(addedMessageTimeouts[productId]);
         }
-        let cartQuantity = 0;
-        cart.forEach((item) => cartQuantity += item.quantity);
-    
-        document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-    })
-})
+
+        // Set new timeout and store its ID
+        addedMessageTimeouts[productId] = setTimeout(() => {
+            addedMessage.style.opacity = 0;
+        }, 2000);
+        
+    });
+});
+
+
 
 
