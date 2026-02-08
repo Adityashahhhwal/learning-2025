@@ -53,6 +53,9 @@
   margin-bottom: 12px;
 }
 
+
+
+
 .payment-summary {
   padding-bottom: 5px;
 }
@@ -79,8 +82,8 @@
 .cart-item-details-grid {
   display: grid;
   /* 100px 1fr 1fr; means the 2nd and 3rd column will
-     take up half the remaining space in the grid
-     (they will divide up the remaining space evenly). */
+  take up half the remaining space in the grid
+  (they will divide up the remaining space evenly). */
   grid-template-columns: 100px 1fr 1fr;
   column-gap: 25px;
 }
@@ -95,29 +98,48 @@
 .product-image {
   max-width: 100%;
   max-height: 120px;
-
+  
   /* margin-left: auto;
      margin-right auto;
      Is a trick for centering an element horizontally
      without needing a container. */
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.product-name {
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.product-price {
-  color: rgb(177, 39, 4);
-  font-weight: 700;
-  margin-bottom: 5px;
-}
-
-.product-quantity .link-primary {
-  margin-left: 3px;
-}
+     margin-left: auto;
+     margin-right: auto;
+    }
+    
+    .product-name {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .product-price {
+      color: rgb(177, 39, 4);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    
+    .product-quantity .link-primary {
+      margin-left: 3px;
+    }
+    
+    .quantity-input {
+      display: none;
+      width: 28px;
+    }
+    
+    .save-quantity-link {
+      display: none;
+      margin-left: 8px;
+    }
+    
+    .is-editing-quantity .quantity-input {
+      display: initial;
+    }
+    
+    .is-editing-quantity .save-quantity-link {
+      display: initial;
+    }
+    
 
 @media (max-width: 1000px) {
   .delivery-options {

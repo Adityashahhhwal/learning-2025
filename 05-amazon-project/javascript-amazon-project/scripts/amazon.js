@@ -59,8 +59,8 @@ document.querySelector('.js-products-grid').innerHTML = productHTML;
 
 // Helper function to calculate total cart quantity
 function updateCartQuantity() {
-    const total = cart.reduce((sum, item) => sum + item.quantity, 0);   // sum = accumulator, item = current value in the array
-    document.querySelector('.js-cart-quantity').textContent = total;
+    const total = cart.reduce((sum, item) => sum + item.quantity,0);   // sum = accumulator, item = current value in the array
+    document.querySelector('.js-cart-quantity').textContent = total === 0 ? '' : `${total}`; // If total is 0, show empty string, otherwise show the total in parentheses
 }
 
 
@@ -86,15 +86,18 @@ function showAddedMessage(productId, addedMessage) {
 // Add to cart functionality
 document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
     button.addEventListener('click', () => {
-        const productId = button.dataset.productId; // Get the product ID from the button's data attribute
-        const quantitySelector = document.querySelector(`.js-quantity-selector[data-product-id="${productId}"]`); // Get the corresponding quantity selector for the clicked button
-        const addedMessage = document.querySelector(`.js-added-to-cart[data-product-id="${productId}"]`); // Get the corresponding "Added to Cart" message element for the clicked button
+        const productId = button.dataset.productId; 
+        const quantitySelector = document.querySelector(`.js-quantity-selector[data-product-id="${productId}"]`); 
+        const addedMessage = document.querySelector(`.js-added-to-cart[data-product-id="${productId}"]`); 
 
         addToCart(productId, parseInt(quantitySelector.value));
         updateCartQuantity();      
         showAddedMessage(productId, addedMessage);      
     });
 });
+
+// Update cart quantity on page load
+updateCartQuantity();
 
 
 
