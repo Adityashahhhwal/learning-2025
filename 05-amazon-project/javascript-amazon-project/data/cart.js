@@ -11,7 +11,7 @@ export function addToCart(productId, quantity) {
     const existing = cart.find(item => item.productId === productId);
 
     if (existing) existing.quantity += quantity;   // If the product is already in the cart, increase its quantity        
-    else cart.push({ productId, quantity });
+    else cart.push({ productId, quantity, deliveryOptionId: '1' });
     
     saveToStorage(); // Save to localStorage after adding
 }
@@ -31,4 +31,12 @@ export function updateCartItemQuantity(productId, newQuantity) {
 
 export function getCartQuantity() {
     return cart.reduce((sum, item) => sum + item.quantity, 0); // Sum up the quantity of all items in the cart 
+}
+
+export function updateDeliveryOption(productId, deliveryOptionId) {
+    const cartItem = cart.find(item => item.productId === productId);
+    if (cartItem) {
+        cartItem.deliveryOptionId = deliveryOptionId;
+        saveToStorage();
+    }
 } 
