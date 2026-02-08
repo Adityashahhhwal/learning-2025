@@ -19,4 +19,8 @@ export function addToCart(productId, quantity) {
 export function removeCartItem(productId) {
     cart = cart.filter(item => item.productId !== productId); 
     saveToStorage(); // Save to localStorage after removing
+}
+
+export function getCartQuantity() {
+    return cart.reduce((sum, item) => sum + item.quantity, 0);
 } 

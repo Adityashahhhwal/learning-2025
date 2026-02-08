@@ -1,4 +1,4 @@
-import {cart , addToCart} from '../data/cart.js';
+import {addToCart, getCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 let productHTML = '';
@@ -57,10 +57,9 @@ products.forEach((product) =>{
 
 document.querySelector('.js-products-grid').innerHTML = productHTML;
 
-// Helper function to calculate total cart quantity
 function updateCartQuantity() {
-    const total = cart.reduce((sum, item) => sum + item.quantity,0);   // sum = accumulator, item = current value in the array
-    document.querySelector('.js-cart-quantity').textContent = total === 0 ? '' : `${total}`; // If total is 0, show empty string, otherwise show the total in parentheses
+    const total = getCartQuantity();
+    document.querySelector('.js-cart-quantity').textContent = total === 0 ? '' : `${total}`;
 }
 
 
@@ -89,6 +88,7 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
         const productId = button.dataset.productId; 
         const quantitySelector = document.querySelector(`.js-quantity-selector[data-product-id="${productId}"]`); 
         const addedMessage = document.querySelector(`.js-added-to-cart[data-product-id="${productId}"]`); 
+
 
         addToCart(productId, parseInt(quantitySelector.value));
         updateCartQuantity();      

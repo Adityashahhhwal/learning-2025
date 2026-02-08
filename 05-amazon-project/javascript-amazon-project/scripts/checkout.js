@@ -1,9 +1,9 @@
-import * as cartItems from '../data/cart.js';
+import {cart, removeCartItem, getCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 let cartSummaryHTML = '';
 
-cartItems.cart.forEach((cartItem) => {
+cart.forEach((cartItem) => {
     const productId = cartItem.productId;
     
     // Find the matching product from products array
@@ -27,14 +27,12 @@ cartItems.cart.forEach((cartItem) => {
                             $${(matchingProduct.priceCents / 100).toFixed(2)}
                         </div>
                         <div class="product-quantity">
-                            <span>
-                                Quantity: <span class="quantity-label">${cartItem.quantity}</span>
+                            <span>Quantity: <span class="quantity-label">${cartItem.quantity}
                             </span>
-                            <span class="update-quantity-link link-primary js-update-quantity-link" data-product-id="${productId}">
-                                Update 
-                                <input class="quantity-input" type="number" min="1" max="10" value="${cartItem.quantity}">  
-                                <span class= "save-quantity-link link-primary"> Save </span>
-                            </span> 
+                            </span>
+                            <input class="quantity-input js-quantity-input" type="number" min="1" max="10" value="${cartItem.quantity}">    
+                            <span class= "save-quantity-link link-primary js-save-quantity-link" data-product-id="${productId}"> Save </span> 
+                            <span class="update-quantity-link link-primary js-update-quantity-link" data-product-id="${productId}">Update</span> 
                             <span class="delete-quantity-link link-primary js-delete-quantity-link" data-product-id="${productId}">
                                 Delete
                             </span>
@@ -86,20 +84,23 @@ cartItems.cart.forEach((cartItem) => {
 });
 
 document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
-          
-          
-          
-document.querySelector('.js-checkout-cart-count').innerHTML = `Checkout (<a class="return-to-home-link" href="amazon.html">${cartItems.cart.length} items</a>)`;
+
+function updateCartCount() {
+    const totalItems = getCartQuantity();
+    document.querySelector('.js-checkout-cart-count').innerHTML = `Checkout (<a class="return-to-home-link" href="amazon.html">${totalItems} items</a>)`;
+}
+
+updateCartCount();
 
 document.querySelectorAll('.js-delete-quantity-link')
     .forEach ((deleteLink) => {
         deleteLink.addEventListener('click', () => {
             const productId = deleteLink.dataset.productId;
-            cartItems.removeCartItem(productId);
+            removeCartItem(productId);
             window.location.reload(); // Reload page to update the display
         })
     });
-    
+
 document.querySelectorAll('.js-update-quantity-link')
     .forEach((updateLink) => {
         updateLink.addEventListener('click', () => {
@@ -107,6 +108,27 @@ document.querySelectorAll('.js-update-quantity-link')
             const container = document.querySelector(`.js-cart-item-container-${productId}`);
             container.classList.add('is-editing-quantity');
         })
-    })
+    });
+document.querySelectorAll('.js-save-quantity-link')
+    .forEach((saveLink) => {
+        saveLink.addEventListener('click', () => {
+            const productId = saveLink.dataset.productId;
+            const container = document.querySelector(`.js-cart-item-container-${productId}`);
+            const newQuantity = parseInt(container.querySelector('.js-quantity-input').value);
+            
+            const cartItem = cart.find(item => item.productId === productId);
+            if (cartItem) {
+                cartItem.quantity = newQuantity;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                // Update the displayed quantity label
+                container.querySelector('.quantity-label').textContent = newQuantity;
+                
+                // Update the cart count in the header
+                updateCartCount();
+            }
+            container.classList.remove('is-editing-quantity');
+        })
+    });
 
 
