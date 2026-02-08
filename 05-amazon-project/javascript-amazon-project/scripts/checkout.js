@@ -109,6 +109,7 @@ document.querySelectorAll('.js-update-quantity-link')
             container.classList.add('is-editing-quantity');
         })
     });
+    
 document.querySelectorAll('.js-save-quantity-link')
     .forEach((saveLink) => {
         saveLink.addEventListener('click', () => {

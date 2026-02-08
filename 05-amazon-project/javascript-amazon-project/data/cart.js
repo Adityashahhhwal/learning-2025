@@ -30,5 +30,5 @@ export function updateCartItemQuantity(productId, newQuantity) {
 }
 
 export function getCartQuantity() {
-    return cart.reduce((sum, item) => sum + item.quantity, 0);
+    return cart.reduce((sum, item) => sum + item.quantity, 0); // Sum up the quantity of all items in the cart 
 } 
