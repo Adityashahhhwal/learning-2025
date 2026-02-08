@@ -40,10 +40,9 @@ Highlights:
 - Checkout with delivery option selection and dynamic delivery dates (dayjs).
 - Modular JS structure with reusable data helpers.
 
-Screenshots (replace these placeholder files with your own):
+Screenshots (PDF):
 
-![Amazon project - product listing](assets/amazon-products.png)
-![Amazon project - checkout flow](assets/amazon-checkout.png)
+[Amazon Project screenshots](data/Amazon%20Project.pdf)
 
 ---
 
