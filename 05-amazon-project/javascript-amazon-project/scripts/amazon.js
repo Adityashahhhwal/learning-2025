@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart , addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 let productHTML = '';
@@ -55,7 +55,6 @@ products.forEach((product) =>{
         </div>`;
 })
 
-
 document.querySelector('.js-products-grid').innerHTML = productHTML;
 
 // Helper function to calculate total cart quantity
@@ -64,39 +63,36 @@ function updateCartQuantity() {
     document.querySelector('.js-cart-quantity').textContent = total;
 }
 
-// Helper function to add items to cart
-function addToCart(productId, quantity) {
-    const existing = cart.find(item => item.productId === productId);
 
-    if (existing) existing.quantity += quantity;   // If the product is already in the cart, increase its quantity        
-    else cart.push({ productId, quantity });
-}
 
 // Store timeout IDs for each product
 const addedMessageTimeouts = {};
+
+// Helper function to show "Added" message with auto-hide after 2 seconds
+function showAddedMessage(productId, addedMessage) {
+    // Clear previous timeout if it exists (resets the timer)
+    if (addedMessageTimeouts[productId]) {
+        clearTimeout(addedMessageTimeouts[productId]);
+    }
+    
+    addedMessage.style.opacity = 1;
+
+    // Set new timeout and store its ID
+    addedMessageTimeouts[productId] = setTimeout(() => {
+        addedMessage.style.opacity = 0;
+    }, 2000);
+}
 
 // Add to cart functionality
 document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
     button.addEventListener('click', () => {
         const productId = button.dataset.productId; // Get the product ID from the button's data attribute
-        const quantitySelector = document.querySelector(`.js-quantity-selector[data-product-id="${productId}"]`);
+        const quantitySelector = document.querySelector(`.js-quantity-selector[data-product-id="${productId}"]`); // Get the corresponding quantity selector for the clicked button
+        const addedMessage = document.querySelector(`.js-added-to-cart[data-product-id="${productId}"]`); // Get the corresponding "Added to Cart" message element for the clicked button
 
         addToCart(productId, parseInt(quantitySelector.value));
-        updateCartQuantity();
-        
-        const addedMessage = document.querySelector(`.js-added-to-cart[data-product-id="${productId}"]`);
-        addedMessage.style.opacity = 1;
-
-        // Clear previous timeout if it exists
-        if (addedMessageTimeouts[productId]) {
-            clearTimeout(addedMessageTimeouts[productId]);
-        }
-
-        // Set new timeout and store its ID
-        addedMessageTimeouts[productId] = setTimeout(() => {
-            addedMessage.style.opacity = 0;
-        }, 2000);
-        
+        updateCartQuantity();      
+        showAddedMessage(productId, addedMessage);      
     });
 });
 
