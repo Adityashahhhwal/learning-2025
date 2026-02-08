@@ -1,4 +1,4 @@
-import {cart, removeCartItem, getCartQuantity} from '../data/cart.js';
+import {cart, removeCartItem, updateCartItemQuantity, getCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 let cartSummaryHTML = '';
@@ -116,17 +116,14 @@ document.querySelectorAll('.js-save-quantity-link')
             const container = document.querySelector(`.js-cart-item-container-${productId}`);
             const newQuantity = parseInt(container.querySelector('.js-quantity-input').value);
             
-            const cartItem = cart.find(item => item.productId === productId);
-            if (cartItem) {
-                cartItem.quantity = newQuantity;
-                localStorage.setItem('cart', JSON.stringify(cart));
-                
-                // Update the displayed quantity label
-                container.querySelector('.quantity-label').textContent = newQuantity;
-                
-                // Update the cart count in the header
-                updateCartCount();
-            }
+            updateCartItemQuantity(productId, newQuantity);
+            
+            // Update the displayed quantity label
+            container.querySelector('.quantity-label').textContent = newQuantity;
+            
+            // Update the cart count in the header
+            updateCartCount();
+            
             container.classList.remove('is-editing-quantity');
         })
     });

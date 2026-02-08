@@ -88,8 +88,6 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
         const productId = button.dataset.productId; 
         const quantitySelector = document.querySelector(`.js-quantity-selector[data-product-id="${productId}"]`); 
         const addedMessage = document.querySelector(`.js-added-to-cart[data-product-id="${productId}"]`); 
-
-
         addToCart(productId, parseInt(quantitySelector.value));
         updateCartQuantity();      
         showAddedMessage(productId, addedMessage);      

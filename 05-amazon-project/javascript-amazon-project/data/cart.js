@@ -21,6 +21,14 @@ export function removeCartItem(productId) {
     saveToStorage(); // Save to localStorage after removing
 }
 
+export function updateCartItemQuantity(productId, newQuantity) {
+    const cartItem = cart.find(item => item.productId === productId);
+    if (cartItem) {
+        cartItem.quantity = newQuantity;
+        saveToStorage(); // Save to localStorage after updating
+    }
+}
+
 export function getCartQuantity() {
     return cart.reduce((sum, item) => sum + item.quantity, 0);
 } 
