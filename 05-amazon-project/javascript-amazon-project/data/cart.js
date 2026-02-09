@@ -39,4 +39,16 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
         cartItem.deliveryOptionId = deliveryOptionId;
         saveToStorage();
     }
-} 
+}
+export function normalizeQuantity(rawQuantity) {
+  let quantity = Number(rawQuantity);
+
+  if (!Number.isFinite(quantity)) quantity = 1; // Default to 1 if the input is not a valid number
+
+  quantity = Math.floor(quantity);
+
+  if (quantity <= 0) return 0; // Return 0 to indicate the item should be removed from the cart
+  if (quantity > 10) return 10; // Cap quantity at 10
+
+  return quantity;
+}
