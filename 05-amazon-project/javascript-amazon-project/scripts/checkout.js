@@ -9,7 +9,7 @@ import { products } from "../data/products.js";
 import { deliveryOptions } from "../data/deliveryOptions.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 
-let cartSummaryHTML = "";
+let cartSummaryHTML = " ";
 
 cart.forEach((cartItem) => {
   const productId = cartItem.productId;
@@ -17,7 +17,7 @@ cart.forEach((cartItem) => {
   // Find the matching product from products array
   const matchingProduct = products.find((product) => product.id === productId);
 
-  const deliveryOptionId = cartItem.deliveryOptionId || "1";
+  const deliveryOptionId = cartItem.deliveryOptionId || "1"; // Default to "1" if no delivery option selected
   const matchingDeliveryOption = deliveryOptions.find(
     (option) => String(option.id) === String(deliveryOptionId),
   );
@@ -66,7 +66,7 @@ cart.forEach((cartItem) => {
         `;
   }
 });
-function renderdeliveryOption() {
+function renderDeliveryOption() {
   function deliveryOptionsHTML(productId, deliveryOptionId) {
     let deliveryOptionsHTML = "";
 
