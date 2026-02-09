@@ -62,7 +62,7 @@ cart.forEach((cartItem) => {
         `;
   }
 });
-
+function renderdeliveryOption(){  
 function deliveryOptionsHTML(productId, deliveryOptionId) {
   let deliveryOptionsHTML = '';
 
@@ -138,6 +138,9 @@ document.querySelectorAll('.js-delivery-option').forEach((option) => {
     option.querySelector('.delivery-option-input').checked = true;
   });
 });
+}
+
+renderdeliveryOption();
 
 document.querySelectorAll(".js-save-quantity-link").forEach((saveLink) => {
   saveLink.addEventListener("click", () => {
