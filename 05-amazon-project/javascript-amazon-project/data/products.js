@@ -1,4 +1,8 @@
- export const products = [
+export function getMatchingProduct(productId) {
+  return products.find((product) => product.id === productId);
+} // Find the product in the products list that matches the given productId
+
+export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",

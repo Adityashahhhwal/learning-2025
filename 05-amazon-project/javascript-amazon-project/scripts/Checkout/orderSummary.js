@@ -6,10 +6,10 @@ import {
   updateDeliveryOption,
   normalizeQuantity,
 } from "../../data/cart.js";
-import { products } from "../../data/products.js";
+import { getMatchingProduct } from "../../data/products.js";
 import { deliveryOptions } from "../../data/deliveryOptions.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
-
+import { renderPaymentSummary } from "./paymentSummary.js";
 const orderSummaryElement = document.querySelector(".js-order-summary"); // Element to display the order summary in the checkout page
 const checkoutCartCountElement = document.querySelector(
   ".js-checkout-cart-count",
@@ -19,9 +19,6 @@ const defaultDeliveryOptionId = String(deliveryOptions[0]?.id ?? "1"); // Fallba
 export function formatPrice(cents) {
   return `$${(cents / 100).toFixed(2)}`;
 }
-function getMatchingProduct(productId) {
-  return products.find((product) => product.id === productId);
-} // Find the product in the products list that matches the given productId
 
 function getMatchingDeliveryOption(deliveryOptionId) {
   // Find the delivery option in the deliveryOptions list that matches the given deliveryOptionId, or return the default delivery option if not found
@@ -191,6 +188,7 @@ function attachOrderSummaryListeners() {
 export function renderCheckoutPage() {
   renderOrderSummary();
   attachOrderSummaryListeners();
+  renderPaymentSummary();
 }
 
 
