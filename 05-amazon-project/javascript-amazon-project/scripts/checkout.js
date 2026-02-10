@@ -1,5 +1,11 @@
-import { renderCheckoutPage } from "./Checkout/orderSummary.js";
+import { renderCheckoutPage, setOnUpdate } from "./Checkout/orderSummary.js";
+import { renderPaymentSummary } from "./Checkout/paymentSummary.js";
 
+function updatePaymentSummary() {
+  document.querySelector(".js-payment-summary").innerHTML = renderPaymentSummary();
+}
+
+setOnUpdate(updatePaymentSummary);
 renderCheckoutPage();
 
 // This file serves as the entry point for the checkout page

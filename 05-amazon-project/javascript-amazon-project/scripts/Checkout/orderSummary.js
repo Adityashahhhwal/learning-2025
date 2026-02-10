@@ -9,18 +9,23 @@ import {
 import { getMatchingProduct } from "../../data/products.js";
 import { deliveryOptions } from "../../data/deliveryOptions.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
-import { renderPaymentSummary } from "./paymentSummary.js";
 const orderSummaryElement = document.querySelector(".js-order-summary"); // Element to display the order summary in the checkout page
 const checkoutCartCountElement = document.querySelector(
   ".js-checkout-cart-count",
 ); // Element to display the cart count in the checkout header
-const defaultDeliveryOptionId = String(deliveryOptions[0]?.id ?? "1"); // Fallback to "1" if deliveryOptions is empty or doesn't have an id
+export const defaultDeliveryOptionId = String(deliveryOptions[0]?.id ?? "1"); // Fallback to "1" if deliveryOptions is empty or doesn't have an id
 
-export function formatPrice(cents) {
-  return `$${(cents / 100).toFixed(2)}`;
+let _onUpdate = null;
+
+export function setOnUpdate(callback) {
+  _onUpdate = callback;
 }
 
-function getMatchingDeliveryOption(deliveryOptionId) {
+export function formatPrice(cents) {
+  return `$${(Math.round((cents ))/ 100).toFixed(2)}`;
+}
+
+export function getMatchingDeliveryOption(deliveryOptionId) {
   // Find the delivery option in the deliveryOptions list that matches the given deliveryOptionId, or return the default delivery option if not found
   return (
     deliveryOptions.find(
@@ -188,7 +193,7 @@ function attachOrderSummaryListeners() {
 export function renderCheckoutPage() {
   renderOrderSummary();
   attachOrderSummaryListeners();
-  renderPaymentSummary();
+  if (_onUpdate) _onUpdate();
 }
 
 
