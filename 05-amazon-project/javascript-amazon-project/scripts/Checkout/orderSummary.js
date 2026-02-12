@@ -35,9 +35,18 @@ export function getMatchingDeliveryOption(deliveryOptionId) {
 }
 
 export function getDeliveryDate(deliveryDays) {
-  return dayjs()
-    .add(Number.parseInt(deliveryDays, 10), "day") // why 10 - to ensure that the deliveryDays is parsed as a base-10 integer, which is important for correct date calculations
-    .format("dddd, MMMM D");
+  let date = dayjs();
+  let businessDaysLeft = Number.parseInt(deliveryDays, 10);
+
+  while (businessDaysLeft > 0) {
+    date = date.add(1, "day");
+    const dayOfWeek = date.day(); // 0 = Sunday, 6 = Saturday
+    if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+      businessDaysLeft--;
+    }
+  }
+
+  return date.format("dddd, MMMM D");
 }
 
 function deliveryOptionsHTML(productId, selectedDeliveryOptionId) {
