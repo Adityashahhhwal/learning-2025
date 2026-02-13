@@ -1,15 +1,3 @@
-function toggleMenu() {
-	const menu = document.querySelector('.menu-links');
-	const icon = document.querySelector('.hamburger-icon');
-
-	if (!menu || !icon) {
-		return;
-	}
-
-	menu.classList.toggle('open');
-	icon.classList.toggle('open');
-}
-
 const THEME_KEY = 'portfolio-theme';
 const THEME_ANIMATION_CLASS = 'is-animating';
 const THEME_TRANSITION_CLASS = 'theme-transitioning';
@@ -21,7 +9,7 @@ function runThemeTransition() {
 
 	window.setTimeout(() => {
 		document.body.classList.remove(THEME_TRANSITION_CLASS);
-	}, 940);
+	}, 750);
 }
 
 function animateThemeIcons() {
@@ -43,6 +31,12 @@ function applyTheme(mode) {
 	document.body.classList.toggle('dark-mode', isDark);
 	document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
 
+	// Update meta theme-color for mobile browser chrome
+	const metaTheme = document.querySelector('meta[name="theme-color"]');
+	if (metaTheme) {
+		metaTheme.setAttribute('content', isDark ? '#000000' : '#fbfbfd');
+	}
+
 	const themedImages = document.querySelectorAll('[data-light][data-dark]');
 	themedImages.forEach((image) => {
 		image.src = isDark ? image.dataset.dark : image.dataset.light;
@@ -58,7 +52,65 @@ function toggleTheme() {
 	applyTheme(isDarkNow ? 'light' : 'dark');
 }
 
+/* ── Scroll-Reveal via Intersection Observer ── */
+
+function initScrollReveal() {
+	const reveals = document.querySelectorAll('.reveal');
+	if (!reveals.length) return;
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('revealed');
+					observer.unobserve(entry.target);
+				}
+			});
+		},
+		{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+	);
+
+	reveals.forEach((el) => observer.observe(el));
+}
+
+/* ── Staggered children reveal for cards ── */
+
+function initStaggerReveal() {
+	const containers = document.querySelectorAll('.about-containers');
+	containers.forEach((container) => {
+		const cards = container.querySelectorAll('.details-container');
+		cards.forEach((card, i) => {
+			card.style.transitionDelay = `${i * 120}ms`;
+		});
+	});
+}
+
+/* ── Nav shadow on scroll ── */
+
+function initNavShadow() {
+	const nav = document.getElementById('desktop-nav');
+	if (!nav) return;
+
+	let ticking = false;
+	window.addEventListener('scroll', () => {
+		if (!ticking) {
+			window.requestAnimationFrame(() => {
+				if (window.scrollY > 20) {
+					nav.style.boxShadow = '0 4px 12px var(--surface-shadow-hover)';
+				} else {
+					nav.style.boxShadow = '0 1px 3px var(--surface-shadow)';
+				}
+				ticking = false;
+			});
+			ticking = true;
+		}
+	});
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 	const savedTheme = localStorage.getItem(THEME_KEY);
 	applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
+	initScrollReveal();
+	initStaggerReveal();
+	initNavShadow();
 });
