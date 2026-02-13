@@ -1,5 +1,7 @@
 import {addToCart, getCartQuantity} from '../data/cart.js';
-import {products} from '../data/products.js';
+import {products, loadProductsFetch} from '../data/products.js';
+
+loadProductsFetch().then(() => {
 
 let productHTML = '';
 
@@ -97,6 +99,5 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
 // Update cart quantity on page load
 updateCartQuantity();
 
-
-
+}); // end loadProductsFetch
 
