@@ -45,6 +45,14 @@
   .about-containers {
     margin-top: 0;
   }
+
+  .menu-theme-toggle {
+    min-height: 3.5rem;
+  }
+
+  .menu-theme-toggle .theme-icon {
+    height: 3.1rem;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -67,6 +75,15 @@
   .contact-info-upper-container,
   .btn-container {
     flex-wrap: wrap;
+  }
+
+  .contact-info-upper-container {
+    padding: 0.75rem;
+    gap: 0.3rem 0.5rem;
+  }
+
+  .contact-info-container {
+    margin: 0.35rem 0.5rem;
   }
   .contact-info-container {
     margin: 0;
@@ -99,5 +116,18 @@
   }
   .text-container {
     text-align: justify;
+  }
+
+  .menu-theme-toggle {
+    min-height: 3.25rem;
+    padding: 10px;
+  }
+
+  .menu-theme-toggle .theme-icon {
+    height: 2.9rem;
+  }
+
+  .btn {
+    width: 8.5rem;
   }
 }
