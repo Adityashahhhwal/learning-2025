@@ -27,6 +27,7 @@
     height: auto;
     justify-content: space-between;
     gap: 0.7rem;
+    border-left: 5rem;
   }
   .nav-actions {
     position: static;
@@ -133,8 +134,8 @@
     text-align: center;
   }
   #desktop-nav {
-    padding: 0.45rem 0.75rem;
-    width: calc(100% - 0.6rem);
+    padding: 0.45rem 0.30rem;
+    width: calc(100% - 1.5rem);
     top: 0.35rem;
   }
   #desktop-nav .nav-links {
