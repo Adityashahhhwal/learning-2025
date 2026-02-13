@@ -59,9 +59,9 @@ body.dark-mode {
   --surface-shadow-hover: rgba(0, 0, 0, 0.4);
   --hero-glow: rgba(129, 140, 248, 0.16);
   --hero-glow-secondary: rgba(34, 211, 238, 0.12);
-  --bg-gradient-start: #232d3f;
-  --bg-gradient-mid: #1b2432;
-  --bg-gradient-end: #111720;
+  --bg-gradient-start: #1f3852;
+  --bg-gradient-mid: #16263a;
+  --bg-gradient-end: #0c141f;
   --nav-glass: rgba(30, 30, 30, 0.62);
   --ring-soft: rgba(255, 255, 255, 0.08);
   --btn-border: #8f8f8f;
