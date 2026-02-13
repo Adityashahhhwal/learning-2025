@@ -32,29 +32,22 @@
     </nav>
     <nav id="hamburger-nav">
       <div class="mobile-nav-actions">
-        <button class="theme-toggle mobile-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" type="button">
-          <img
-            src="./assets/theme_light.png"
-            alt="Theme icon"
-            class="icon theme-icon"
-            data-light="./assets/theme_light.png"
-            data-dark="./assets/theme_dark.png"
-          />
-        </button>
-        <div class="hamburger-menu">
-          <div class="hamburger-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
+        <ul class="nav-links mobile-nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </div>
-      <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-      </div>
+      <button class="theme-toggle mobile-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" type="button">
+        <img
+          src="./assets/theme_light.png"
+          alt="Theme icon"
+          class="icon theme-icon"
+          data-light="./assets/theme_light.png"
+          data-dark="./assets/theme_dark.png"
+        />
+      </button>
     </nav>
     <section id="profile">
       <div class="section__pic-container">

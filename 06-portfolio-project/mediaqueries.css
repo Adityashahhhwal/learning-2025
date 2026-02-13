@@ -48,12 +48,19 @@
 
   .menu-theme-toggle,
   .mobile-theme-toggle {
-    min-height: 3.5rem;
+    min-height: 2.9rem;
+    min-width: 2.9rem;
+    padding: 0.25rem;
   }
 
   .menu-theme-toggle .theme-icon,
   .mobile-theme-toggle .theme-icon {
-    height: 3.1rem;
+    height: 2.1rem;
+  }
+
+  .mobile-nav-links {
+    gap: 0.85rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -97,7 +104,7 @@
   .logo {
     font-size: 1.5rem;
   }
-  .nav-links {
+  .nav-links-container .nav-links {
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
@@ -119,13 +126,19 @@
 
   .menu-theme-toggle,
   .mobile-theme-toggle {
-    min-height: 3.25rem;
-    padding: 10px;
+    min-height: 2.7rem;
+    min-width: 2.7rem;
+    padding: 0.2rem;
   }
 
   .menu-theme-toggle .theme-icon,
   .mobile-theme-toggle .theme-icon {
-    height: 2.9rem;
+    height: 1.95rem;
+  }
+
+  .mobile-nav-links {
+    gap: 0.65rem;
+    font-size: 0.8rem;
   }
 
   .btn {
