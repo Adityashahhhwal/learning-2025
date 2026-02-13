@@ -85,6 +85,21 @@
   .about-containers {
     margin-top: 0;
   }
+
+  #profile .btn {
+    font-size: 0.75rem;
+    padding: 0.72rem 1.2rem;
+    min-width: 7.44rem;
+  }
+
+  #socials-container {
+    gap: 1rem;
+  }
+
+  #socials-container .icon {
+    height: 2.35rem;
+    padding: 0.46rem;
+  }
 }
 
 /* ── Mobile ── */
@@ -175,6 +190,21 @@
     font-size: 0.85rem;
     padding: 0.75rem 1.25rem;
     min-width: 7.5rem;
+  }
+
+  #profile .btn {
+    font-size: 0.72rem;
+    padding: 0.66rem 1.08rem;
+    min-width: 7.04rem;
+  }
+
+  #socials-container {
+    gap: 0.9rem;
+  }
+
+  #socials-container .icon {
+    height: 2.2rem;
+    padding: 0.42rem;
   }
 
   /* Scroll-reveal – reduce travel for mobile */

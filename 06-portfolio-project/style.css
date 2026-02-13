@@ -27,13 +27,13 @@
   --link-hover: #0071e3;
   --link-hover-underline: rgba(0, 113, 227, 0.3);
   --hamburger-line: #1d1d1f;
-  --surface-shadow: rgba(0, 0, 0, 0.04);
-  --surface-shadow-hover: rgba(0, 0, 0, 0.08);
-  --hero-glow: rgba(99, 102, 241, 0.06);
-  --hero-glow-secondary: rgba(0, 199, 190, 0.05);
-  --bg-gradient-start: #eaf2fc;
-  --bg-gradient-mid: #dfeaf9;
-  --bg-gradient-end: #ffffff;
+  --surface-shadow: rgba(0, 0, 0, 0.28);
+  --surface-shadow-hover: rgba(0, 0, 0, 0.4);
+  --hero-glow:rgba(129, 140, 248, 0.16);
+  --hero-glow-secondary: rgba(34, 211, 238, 0.12);
+  --bg-gradient-start: #ccdae9;
+  --bg-gradient-mid: #edf6ff;
+  --bg-gradient-end: #f5faff;
   --nav-glass: rgba(255, 255, 255, 0.72);
   --ring-soft: rgba(255, 255, 255, 0.6);
   --btn-border: #1d1d1f;
@@ -45,30 +45,41 @@
 }
 
 body.dark-mode {
-  --bg: #000000;
-  --text: #f5f5f7;
-  --text-muted: #a1a1a6;
-  --surface: rgba(28, 28, 30, 0.72);
-  --card: rgba(28, 28, 30, 0.56);
-  --border: rgba(255, 255, 255, 0.08);
-  --menu-surface: rgba(28, 28, 30, 0.82);
-  --link-hover: #2997ff;
-  --link-hover-underline: rgba(41, 151, 255, 0.3);
-  --hamburger-line: #f5f5f7;
-  --surface-shadow: rgba(0, 0, 0, 0.16);
-  --surface-shadow-hover: rgba(0, 0, 0, 0.24);
-  --hero-glow: rgba(129, 140, 248, 0.1);
-  --hero-glow-secondary: rgba(34, 211, 238, 0.08);
-  --bg-gradient-start: #131341;
-  --bg-gradient-mid: #010119;
-  --bg-gradient-end: #000000;
-  --nav-glass: rgba(22, 22, 24, 0.72);
-  --ring-soft: rgba(255, 255, 255, 0.06);
-  --btn-border: rgba(255, 255, 255, 0.25);
-  --btn-solid: #f5f5f7;
-  --btn-solid-hover: #e8e8ed;
-  --btn-solid-text: #000000;
-  --btn-hover-border: #f5f5f7;
+  --bg: #121212;
+  --text: #f5f5f5;
+  --text-muted: #c9c9c9;
+  --surface: #1e1e1e;
+  --card: #202020;
+  --border: #3a3a3a;
+  --menu-surface: #1e1e1e;
+  --link-hover: #d0d0d0;
+  --link-hover-underline: #8a8a8a;
+  --hamburger-line: #f5f5f5;
+  --surface-shadow: rgba(0, 0, 0, 0.28);
+  --surface-shadow-hover: rgba(0, 0, 0, 0.4);
+  --hero-glow: rgba(129, 140, 248, 0.16);
+  --hero-glow-secondary: rgba(34, 211, 238, 0.12);
+  --bg-gradient-start: #2d3e50;
+  --bg-gradient-mid: #1a253a;
+  --bg-gradient-end: #0b111e;
+  --nav-glass: rgba(30, 30, 30, 0.62);
+  --ring-soft: rgba(255, 255, 255, 0.08);
+  --btn-border: #8f8f8f;
+  --btn-solid: #f5f5f5;
+  --btn-solid-hover: #dbdbdb;
+  --btn-solid-text: #121212;
+  --btn-hover-border: #f5f5f5;
+}
+
+body.dark-mode {
+  background-image: linear-gradient(
+      180deg,
+      var(--bg-gradient-start) 0%,
+      var(--bg-gradient-mid) 52%,
+      var(--bg-gradient-end) 100%
+    ),
+    radial-gradient(circle at 15% 10%, var(--hero-glow), transparent 38%),
+    radial-gradient(circle at 85% 0%, var(--hero-glow-secondary), transparent 34%);
 }
 
 body {
@@ -81,8 +92,8 @@ body {
       var(--bg-gradient-mid) 50%,
       var(--bg-gradient-end) 100%
     ),
-    radial-gradient(ellipse at 20% 0%, var(--hero-glow), transparent 50%),
-    radial-gradient(ellipse at 80% 0%, var(--hero-glow-secondary), transparent 50%);
+    radial-gradient(circle at 15% 10%, var(--hero-glow), transparent 38%),
+    radial-gradient(circle at 85% 0%, var(--hero-glow-secondary), transparent 34%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: var(--text);
@@ -264,8 +275,8 @@ a:hover {
 
 .logo {
   margin-left: 0.8rem;
-  font-size: 1.45rem;
-  font-weight: 600;
+  font-size: 1.75rem;
+  font-weight: 500;
   letter-spacing: -0.03em;
 }
 
@@ -413,12 +424,13 @@ section {
   display: flex;
   justify-content: center;
   margin-top: 1.25rem;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 #socials-container .icon {
-  padding: 0.35rem;
-  border-radius: 0.75rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  border-radius: 0.9rem;
   background: var(--card);
   border: 1px solid var(--border);
   backdrop-filter: blur(8px);
@@ -494,6 +506,16 @@ section {
 
 .btn-container {
   gap: 1rem;
+}
+
+#profile .btn-container {
+  gap: 1.1rem;
+}
+
+#profile .btn {
+  font-size: 0.96rem;
+  padding: 0.96rem 1.48rem;
+  min-width: 8.3rem;
 }
 
 /* ABOUT SECTION */
