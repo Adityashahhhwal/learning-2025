@@ -46,11 +46,13 @@
     margin-top: 0;
   }
 
-  .menu-theme-toggle {
+  .menu-theme-toggle,
+  .mobile-theme-toggle {
     min-height: 3.5rem;
   }
 
-  .menu-theme-toggle .theme-icon {
+  .menu-theme-toggle .theme-icon,
+  .mobile-theme-toggle .theme-icon {
     height: 3.1rem;
   }
 }
@@ -115,12 +117,14 @@
     text-align: justify;
   }
 
-  .menu-theme-toggle {
+  .menu-theme-toggle,
+  .mobile-theme-toggle {
     min-height: 3.25rem;
     padding: 10px;
   }
 
-  .menu-theme-toggle .theme-icon {
+  .menu-theme-toggle .theme-icon,
+  .mobile-theme-toggle .theme-icon {
     height: 2.9rem;
   }
 

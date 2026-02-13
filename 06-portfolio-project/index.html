@@ -31,30 +31,29 @@
       </button>
     </nav>
     <nav id="hamburger-nav">
-      <div class="logo">Aditya Shahwal</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+      <div class="mobile-nav-actions">
+        <button class="theme-toggle mobile-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" type="button">
+          <img
+            src="./assets/theme_light.png"
+            alt="Theme icon"
+            class="icon theme-icon"
+            data-light="./assets/theme_light.png"
+            data-dark="./assets/theme_dark.png"
+          />
+        </button>
+        <div class="hamburger-menu">
+          <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
-        <div class="menu-links">
-          <li>
-            <button class="theme-toggle menu-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" type="button">
-              <img
-                src="./assets/theme_light.png"
-                alt="Theme icon"
-                class="icon theme-icon"
-                data-light="./assets/theme_light.png"
-                data-dark="./assets/theme_dark.png"
-              />
-            </button>
-          </li>
+      </div>
+      <div class="menu-links">
           <li><a href="#about" onclick="toggleMenu()">About</a></li>
           <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
           <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
           <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
       </div>
     </nav>
     <section id="profile">

@@ -229,11 +229,40 @@ a:hover {
 
 #hamburger-nav {
   display: none;
+  position: relative;
+  justify-content: flex-end;
+  width: calc(100% - 2rem);
+  max-width: 1200px;
+  margin: 1rem auto 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ring-soft);
+  border-radius: 999px;
+  background: var(--nav-glass);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 26px var(--surface-shadow);
+  height: auto;
 }
 
 .hamburger-menu {
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mobile-theme-toggle {
+  min-width: 3.25rem;
+  min-height: 3.25rem;
+  padding: 0.35rem;
+}
+
+.mobile-theme-toggle .theme-icon {
+  height: 2.5rem;
 }
 
 .hamburger-icon {
@@ -254,16 +283,18 @@ a:hover {
 
 .menu-links {
   position: absolute;
-  top: 100%;
-  right: 0;
+  top: calc(100% + 0.55rem);
+  right: 1rem;
   background-color: var(--menu-surface);
-  border: 1px solid var(--border);
+  border: 1px solid transparent;
   border-radius: 1rem;
   box-shadow: 0 14px 30px var(--surface-shadow);
   width: fit-content;
+  opacity: 0;
+  pointer-events: none;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 300ms ease-in-out, background-color 300ms ease;
+  transition: max-height 300ms ease-in-out, background-color 300ms ease, opacity 220ms ease, border-color 220ms ease;
 }
 
 .menu-links a {
@@ -362,6 +393,9 @@ body.dark-mode .theme-icon {
 
 .menu-links.open {
   max-height: 300px;
+  opacity: 1;
+  pointer-events: auto;
+  border-color: var(--border);
 }
 
 .hamburger-icon.open span:first-child {
