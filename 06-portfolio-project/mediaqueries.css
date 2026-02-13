@@ -143,12 +143,19 @@
     gap: 0.65rem;
   }
   .desktop-theme-toggle {
-    min-width: 2.6rem;
-    min-height: 2.6rem;
+    width: clamp(2.4rem, 8vw, 2.8rem);
+    height: clamp(2.4rem, 8vw, 2.8rem);
+    min-width: 2.4rem;
+    min-height: 2.4rem;
+    margin-right: max(16px, env(safe-area-inset-right));
+    flex-shrink: 0;
+    box-sizing: border-box;
   }
+  
   .desktop-theme-toggle .theme-icon {
     height: 1.8rem;
   }
+
   .section__pic-container {
     width: auto;
     height: 46vw;
