@@ -18,6 +18,9 @@
   }
   #desktop-nav {
     display: flex;
+    position: sticky;
+    top: 0.45rem;
+    z-index: 40;
     width: calc(100% - 1rem);
     padding: 0.55rem 1rem;
     min-height: 3.4rem;
@@ -33,6 +36,7 @@
   #desktop-nav .nav-links {
     font-size: 0.92rem;
     gap: 0.9rem;
+    white-space: nowrap;
   }
   .desktop-theme-toggle {
     position: static;
@@ -56,6 +60,10 @@
   #profile,
   .section-container {
     display: block;
+  }
+  #profile {
+    height: auto;
+    margin-bottom: 1.75rem;
   }
   .arrow {
     display: none;
@@ -84,8 +92,8 @@
     height: 40vh;
   }
   #profile {
-    height: 83vh;
-    margin-bottom: 0;
+    height: auto;
+    margin-bottom: 1.25rem;
   }
   article {
     font-size: 1rem;
@@ -126,6 +134,7 @@
   #desktop-nav {
     padding: 0.45rem 0.75rem;
     width: calc(100% - 0.6rem);
+    top: 0.35rem;
   }
   #desktop-nav .nav-links {
     font-size: 0.78rem;
