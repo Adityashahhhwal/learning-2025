@@ -21,7 +21,7 @@ function runThemeTransition() {
 
 	window.setTimeout(() => {
 		document.body.classList.remove(THEME_TRANSITION_CLASS);
-	}, 580);
+	}, 940);
 }
 
 function animateThemeIcons() {
