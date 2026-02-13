@@ -35,10 +35,11 @@ Near Term Shift: Introduce backend (Node.js + Express) + data persistence (JSON 
 Live: https://adityashahhhwal.github.io/learning-2025/05-amazon-project/javascript-amazon-project/amazon.html
 
 Highlights:
-- Product catalog rendered dynamically from data.
+- Product catalog loaded asynchronously using Fetch API from backend endpoint.
+- Object-oriented product classes (Product, Clothing, Appliance) with inheritance.
 - Cart stored in localStorage with quantity edits and delete flow.
 - Checkout with delivery option selection and dynamic delivery dates (dayjs).
-- Modular JS structure with reusable data helpers.
+- Modular JS structure with reusable data helpers and promise-based data loading.
 
 Screenshots (PDF):
 
@@ -54,7 +55,8 @@ Screenshots (PDF):
 | [Simple Calculator](https://adityashahhhwal.github.io/learning-2025/02-calculator/) | Frontend | HTML, CSS, JS | User input, state management, basic math operations |
 | [Rock Paper Scissors](https://adityashahhhwal.github.io/learning-2025/03-rock-paper-scissors/) | Frontend | HTML, CSS, JS | Game logic, DOM updates, conditional logic |
 | [To-Do List App](https://adityashahhhwal.github.io/learning-2025/04-todo-list/) | Frontend | HTML, CSS, JS | Task management, dynamic list rendering, user feedback |
-| [Amazon Project](https://adityashahhhwal.github.io/learning-2025/05-amazon-project/javascript-amazon-project/amazon.html) | Frontend | HTML, CSS, JS | E-commerce UI, shopping cart, product listing, checkout flow |
+| [Amazon Project](https://adityashahhhwal.github.io/learning-2025/05-amazon-project/javascript-amazon-project/amazon.html) | Frontend | HTML, CSS, JS, Fetch API | E-commerce UI, async data loading, OOP, shopping cart, checkout flow |
+| [Portfolio Website](https://adityashahhhwal.github.io/learning-2025/06-portfolio-project/) | Frontend | HTML, CSS, JS | Personal portfolio site, responsive design, navigation, modern UI |
 | (Upcoming) Form Validation Lab | Frontend | JS, Constraint API | Input handling, UX |
 | (Upcoming) Simple REST API | Backend | Node.js, Express | Routing, JSON responses |
 | (Upcoming) Score Service + Persistence | Backend | Node.js, SQLite/Postgres | CRUD, data modeling |
@@ -70,7 +72,7 @@ Screenshots (PDF):
 | Domain | Foundation | In Progress | Planned Depth |
 |--------|-----------|-------------|---------------|
 | Frontend | HTML, CSS basics | Layout systems, accessibility | Component architecture |
-| JavaScript | Syntax, control flow | Modules, async patterns | Performance, testing rigor |
+| JavaScript | Syntax, control flow | Modules, async patterns, OOP, Fetch API | Performance, testing rigor |
 | Backend | — | Routing, REST design | Auth, caching, service layering |
 | Data | — | Basic persistence (file/JSON) | SQL schema design, indexes |
 | Testing | — | Unit tests (Jest) | Integration + CI |
@@ -134,6 +136,8 @@ Tracking: Add brief notes in `cs-notes/` with solution rationale; emphasize clar
 
 ## 10. Continuous Improvement Log
 
+- 2026-02-13: Integrated async Fetch API for product loading in Amazon project (improved data handling).
+- 2026-02-13: Added personal portfolio website with responsive design (project 06).
 - 2026-02-09: Enhanced checkout delivery options and dynamic delivery dates.
 - 2025-09-06: Added DOM interactions project and simple calculator (projects 01-02).
 - 2025-09-02: Added full-stack & CS roadmap to README (broadening scope).
