@@ -41,7 +41,7 @@ body.dark-mode .nav-links-container .nav-links a {
   --hero-glow-secondary: rgba(34, 211, 238, 0.12);
   --bg-gradient-start: #adc2d7;
   --bg-gradient-mid: #dde7f2;
-  --bg-gradient-end: #f5f7f9;
+  --bg-gradient-end: #f7f8f9;
   --nav-glass: rgba(255, 255, 255, 0.72);
   --ring-soft: rgba(255, 255, 255, 0.6);
   --btn-border: #1d1d1f;
@@ -69,7 +69,7 @@ body.dark-mode {
   --hero-glow-secondary: rgba(34, 211, 238, 0.12);
   --bg-gradient-start: #1f3852;
   --bg-gradient-mid: #16263a;
-  --bg-gradient-end: #0c141f;
+  --bg-gradient-end: #00040a;
   --nav-glass: rgba(30, 30, 30, 0.62);
   --ring-soft: rgba(255, 255, 255, 0.08);
   --btn-border: #8f8f8f;
@@ -223,19 +223,27 @@ nav {
   position: relative;
   overflow: hidden;
   top: 0.75rem;
-  z-index: 100;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+
   width: calc(100% - 5rem);
   max-width: 1200px;
   margin: 0.75rem auto 0;
   padding: 0 2rem;
-  border: 1px solid var(--border);
+
   border-radius: 999px;
-  background: transparent;
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  box-shadow: 0 1px 3px var(--surface-shadow);
-  transition: box-shadow 300ms ease, background-color var(--theme-transition-duration) var(--theme-transition-ease);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: transparent;       /* pure transparency */
+  backdrop-filter: none;         /* remove blur haze */
+  -webkit-backdrop-filter: none;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); /* deep shadow instead of glow */
+
+  transition: transform 300ms ease, box-shadow 300ms ease;
 }
 
 /* video background */
@@ -251,6 +259,8 @@ nav {
   object-fit: cover;
   z-index: -1;
   pointer-events: none;
+
+  filter: brightness(0.55) contrast(1.25) saturate(1.05);
 }
 
 .nav-links {
