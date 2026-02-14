@@ -99,11 +99,12 @@ export function loadProductsFetch() {
   ).then((response) => {
     return response.json();
   }).then((productsData) => {
-    products = productsData.forEach((productDetails) => {
+
+    productsData.forEach((productDetails) => {
       if (productDetails.type === 'clothing') {
-      products.push(new Clothing(productDetails));
-      }else{ 
-      products.push(new Product(productDetails));
+        products.push(new Clothing(productDetails));
+      } else {
+        products.push(new Product(productDetails));
       }
     });
 
@@ -124,11 +125,12 @@ export function loadProducts(fun) {
   const xhr = new XMLHttpRequest();
 
   xhr.addEventListener('load', () => {
-    products = JSON.parse(xhr.response).forEach((productDetails) => {
+
+    JSON.parse(xhr.response).forEach((productDetails) => {
       if (productDetails.type === 'clothing') {
         products.push(new Clothing(productDetails));
-      }else{ 
-      products.push(new Product(productDetails));
+      } else {
+        products.push(new Product(productDetails));
       }
     });
 

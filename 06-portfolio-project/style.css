@@ -1,3 +1,11 @@
+/* Fix: Footer nav links color in light mode */
+.nav-links-container .nav-links a {
+  color: var(--text);
+}
+
+body.dark-mode .nav-links-container .nav-links a {
+  color: #fff;
+}
 /* GENERAL */
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
@@ -31,9 +39,9 @@
   --surface-shadow-hover: rgba(0, 0, 0, 0.4);
   --hero-glow:rgba(129, 140, 248, 0.16);
   --hero-glow-secondary: rgba(34, 211, 238, 0.12);
-  --bg-gradient-start: #ccdae9;
-  --bg-gradient-mid: #edf6ff;
-  --bg-gradient-end: #f5faff;
+  --bg-gradient-start: #adc2d7;
+  --bg-gradient-mid: #dde7f2;
+  --bg-gradient-end: #f5f7f9;
   --nav-glass: rgba(255, 255, 255, 0.72);
   --ring-soft: rgba(255, 255, 255, 0.6);
   --btn-border: #1d1d1f;
@@ -103,6 +111,10 @@ body {
   transition: background-color var(--theme-transition-duration) var(--theme-transition-ease),
     color var(--theme-transition-duration) var(--theme-transition-ease),
     background-image var(--theme-transition-duration) var(--theme-transition-ease);
+  overflow-x: hidden;
+}
+
+html {
   overflow-x: hidden;
 }
 
@@ -380,13 +392,15 @@ body.dark-mode .theme-icon {
 
 section {
   padding-top: 4vh;
-  height: 96vh;
+  min-height: 60vh;
   margin: 0 auto;
   padding-left: 6rem;
   padding-right: 6rem;
   max-width: 1200px;
   box-sizing: border-box;
-  min-height: fit-content;
+  min-width: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .section-container {
