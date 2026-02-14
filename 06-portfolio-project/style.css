@@ -232,7 +232,8 @@ nav {
 }
 
 .nav-links a {
-  font-weight: 400;
+  color: white;
+  font-weight: 500;
   letter-spacing: 0em;
   position: relative;
   padding: 0.2rem 0;
