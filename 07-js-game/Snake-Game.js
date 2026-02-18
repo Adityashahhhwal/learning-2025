@@ -3,11 +3,12 @@ const gridSize = 20;
 const logo = document.getElementById('logo');
 const instructionText = document.getElementById('instruction-text');
 //define game variables
-let snake = [{x:2, y:10}];
-let food = getPosition();
+let snake = [{x:2, y:10}]; //direction
+let food = getPosition(); // 
 let direction = 'up';
 let gameSpeed = 200;
 let gameStarted = false;
+let gameinterval;
 //draw snake
 function draw() {
     board.innerHTML = '';
@@ -77,7 +78,6 @@ function move(){
     
     if (head.x == food.x && head.y == food.y){
         food = getPosition();
-        clearInterval(loopID);
     }else{
         snake.pop();
     }
@@ -88,8 +88,43 @@ let loopID = setInterval(() =>{
     move();
 },gameSpeed);
 
-function startGame() {
-    instructionText.remove();
-    logo.remove();
-    gameStarted = true;
+function checkCollison() {
+
 }
+function startGame() {
+    instructionText.style.display = 'none';
+    logo.style.display= 'none';
+    gameStarted = true;
+
+    gameinterval = setInterval(() =>{
+        draw();
+        move();
+        //checkCollison();
+    },gameSpeed);
+}
+
+function handleKeyPress(event) {
+    if(
+        (!gameStarted && event.code === 'Space')||
+        (!gameStarted && event.key === ' ')
+    ){
+        startGame();
+    }else{
+        switch (event.key){
+            case 'ArrowUp':
+                direction = 'up';
+                break;
+            case 'ArrowDown':
+                direction = 'down';
+                break;
+            case 'ArrowRight':
+                direction = 'right';
+                break;
+            case 'ArrowLeft':
+                direction = 'left';
+                break;
+        }
+    }
+}
+
+document.addEventListener('keydown',handleKeyPress);
