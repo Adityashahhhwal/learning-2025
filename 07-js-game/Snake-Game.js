@@ -9,12 +9,7 @@ let direction = 'up';
 let gameSpeed = 200;
 let gameStarted = false;
 let gameinterval;
-//draw snake
-function draw() {
-    board.innerHTML = '';
-    drawSnake();
-    drawFood();
-}
+
 
 function drawSnake() {
     snake.forEach(position => {
@@ -23,10 +18,17 @@ function drawSnake() {
         setPosition(snakeElement,position);
     });
 }
+
 function drawFood() {
     const foodElement = createGameElement('div','food');
     board.appendChild(foodElement);
     setPosition(foodElement,food);
+}
+
+function draw() {
+    board.innerHTML = '';
+    drawSnake();
+    drawFood();
 }
 
 function createGameElement(tag, className ){
@@ -36,24 +38,18 @@ function createGameElement(tag, className ){
     return element;
 }
 
-// set the position of snake or food 
-
-function setPosition(snakeElement,position){
-    snakeElement.style.gridColumn = position.x; // 
-    snakeElement.style.gridRow = position.y; //
-}
-
-// draw();
-
-
+// set the position of snake or food on the grid
 function getPosition() {
     const x = Math.floor(Math.random()*gridSize)+1;
     const y = Math.floor(Math.random()*gridSize)+1;
 
     return {x,y};
 }
+function setPosition(snakeElement,position){
+    snakeElement.style.gridColumn = position.x; 
+    snakeElement.style.gridRow = position.y; 
+}
 
-// moving the snake
 
 function move(){
     const head = {...snake[0]};
@@ -78,19 +74,28 @@ function move(){
     
     if (head.x == food.x && head.y == food.y){
         food = getPosition();
+        increaseSpeed();
+        restartGameInterval();
     }else{
         snake.pop();
     }
 }
 
-let loopID = setInterval(() =>{
-    draw();
-    move();
-},gameSpeed);
-
-function checkCollison() {
-
+increaseSpeed = () => {
+    if(gameSpeed > 10){
+        gameSpeed -= 10;
+    }
 }
+
+function restartGameInterval() {
+    clearInterval(gameinterval);
+    gameinterval = setInterval(() => {
+        draw();
+        move();
+    }, gameSpeed);
+}
+
+//start the game
 function startGame() {
     instructionText.style.display = 'none';
     logo.style.display= 'none';
@@ -102,7 +107,7 @@ function startGame() {
         //checkCollison();
     },gameSpeed);
 }
-
+//controls
 function handleKeyPress(event) {
     if(
         (!gameStarted && event.code === 'Space')||
@@ -128,3 +133,4 @@ function handleKeyPress(event) {
 }
 
 document.addEventListener('keydown',handleKeyPress);
+
