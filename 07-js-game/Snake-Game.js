@@ -82,8 +82,12 @@ function move(){
 }
 
 increaseSpeed = () => {
-    if(gameSpeed > 10){
+    if(gameSpeed > 150){
         gameSpeed -= 10;
+    }else if(gameSpeed > 100){
+        gameSpeed -= 5;
+    }else if(gameSpeed > 50){
+        gameSpeed -= 2;
     }
 }
 
