@@ -48,7 +48,7 @@ https://adityashahhhwal.github.io/learning-2025/05-amazon-project/javascript-ama
 ### 2) Personal Portfolio Website
 
 **Live:**
-https://adityashahhhwal.github.io/learning-2025/06-portfolio-project/
+adityashahwal.me
 
 **Key engineering highlights:**
 - Responsive desktop + hamburger navigation
