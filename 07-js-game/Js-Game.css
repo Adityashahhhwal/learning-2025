@@ -1,45 +1,60 @@
+/* Import retro pixel font */
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
+/* Main page layout */
 body {
   display: flex;
   align-items: center;
+  /* Vertically center the game */
   justify-content: center;
+  /* Horizontally center the game */
   height: clamp(10vh, 100dvh, 100svh);
+  /* Full screen height */
   margin: 0;
   font-family: 'VT323', monospace;
+  /* Apply retro font */
 }
 
+/* Base background colors */
 body,
 .snake {
   background-color: #414141;
+  /* Dark gray for page background and snake body */
 }
 
+/* The actual playable area */
 #game-board {
   border-radius: 100px;
   display: grid;
   grid-template-columns: repeat(20, 20px);
+  /* 20 columns, each 20px wide */
   grid-template-rows: repeat(20, 20px);
+  /* 20 rows, each 20px tall */
   margin: 5px;
 }
 
+/* Outer thick border to look like an old game console */
 .game-border-1 {
   border: #595f43 solid 10px;
   border-radius: 30px;
   box-shadow: inset 0 0 0 10px #595f43;
 }
 
+/* Middle decorative border */
 .game-border-2 {
   border: #abb78a solid 8px;
   border-radius: 26px;
   box-shadow: inset 0 0 0 10px #abb78a;
 }
 
+/* Inner border that serves as the immediate game frame */
 .game-border-3 {
   border: #8b966c solid 30px;
   border-radius: 20px;
   box-shadow: inset 0 0 0 5px #8b966c;
 }
 
+/* Start/Game Over screen text */
 #instruction-text {
   position: absolute;
   top: 60%;
@@ -51,11 +66,13 @@ body,
   margin: 0;
 }
 
+/* Score display container */
 .scores {
   display: flex;
   justify-content: space-between;
 }
 
+/* Current score styling */
 #score {
   color: #abb78a;
 }
@@ -67,25 +84,32 @@ body,
   margin: 10px 0;
 }
 
+/* High score styling (currently hidden via display: none) */
 #highScore {
   color: #d8ddca;
   display: none;
 }
 
+/* Game screen background color */
 .game-border-3,
 #logo {
   background-color: #c4cfa3;
+  /* Retro green screen color */
 }
 
+/* Visually separate the snake segments */
 .snake {
   border: #5a5a5a 1px dotted;
 }
 
+/* Styling for the food the snake eats */
 .food {
   background-color: #b42020;
+  /* Red apple color */
   border: #f1aaaa 2px dashed;
 }
 
+/* Snake game title logo */
 #logo {
   position: absolute;
 }
