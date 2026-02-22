@@ -19,9 +19,9 @@
 
 ## Recruiter Snapshot
 
-- **Target roles:** Frontend Intern / Junior Software Developer
-- **Current focus:** Vanilla JavaScript, DOM architecture, modular code, responsive UI
-- **What this repo demonstrates:** consistent shipping, feature iteration, and practical debugging/refactoring
+- **Target roles:** Frontend Intern / Junior Software Engineer
+- **Core Competencies:** DOM Architecture, Vanilla JavaScript (ES6+), State Management, Algorithmic Problem Solving, and Responsive UI
+- **What this repo demonstrates:** A track record of shipping real features, consistent iteration, resolving complex bugs, and writing maintainable code without relying heavily on frameworks.
 - **Status:** Active (latest updates pushed in Feb 2026)
 
 ---
@@ -56,6 +56,18 @@ https://adityashahhhwal.github.io/learning-2025/06-portfolio-project/
 - Light/dark asset swapping via `data-light` / `data-dark`
 - Improved project section content and layout refinements
 
+### 3) JavaScript Snake Game (Algorithmic Logic)
+
+**Live:**
+https://adityashahhhwal.github.io/learning-2025/07-js-game/
+
+**Key engineering highlights:**
+- Built a custom **game-loop engine** using `setInterval` with scaling difficulty (speed scaling).
+- Implemented **Grid-based collision detection** algorithms to handle wall crashes and self-cannibalization.
+- Solved recursive edge-cases, guaranteeing food spawns dynamically without overlapping the snake's current coordinates.
+- Managed complex game state (score, high score, directional inputs, active status) completely in Vanilla JS.
+- Cleanly mapped 2D JavaScript array coordinates to dynamic CSS Grid positions for high-performance DOM rendering to minimize layout thrashing.
+
 ---
 
 ## Project List
@@ -68,11 +80,13 @@ https://adityashahhhwal.github.io/learning-2025/06-portfolio-project/
 | To-Do List | https://adityashahhhwal.github.io/learning-2025/04-todo-list/ | Dynamic rendering, list state management |
 | Amazon Project | https://adityashahhhwal.github.io/learning-2025/05-amazon-project/javascript-amazon-project/amazon.html | Modular JS architecture, cart + checkout logic |
 | Portfolio Site | https://adityashahhhwal.github.io/learning-2025/06-portfolio-project/ | Responsive UI, theming, content presentation |
+| Javascript Snake Game | https://adityashahhhwal.github.io/learning-2025/07-js-game/ | Game loops, 2D Arrays, Collision Algorithms, State Management |
 
 ---
 
 ## Recent Commit-Based Progress (Feb 2026)
 
+- **2026-02-22:** Debugged and polished `07-js-game` (Snake Game) logic, including wall collisions, preventing self-cannibalization, ensuring food doesn't spawn on the snake body, and adding a persistent High Score tracking feature.
 - **2026-02-13:** Portfolio improvements (layout/content/style polish), theme toggle enhancements, and code readability refactors
 - **2026-02-12:** Added async cart loading path and started object-oriented cart structure exploration (`cartOop.js`)
 - **2026-02-10 to 2026-02-11:** Refactored checkout payment summary and integrated product + delivery calculations
