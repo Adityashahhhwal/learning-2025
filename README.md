@@ -1,14 +1,16 @@
 <div align="center">
 
-# Learning 2025 – Frontend Engineering Portfolio
+# Learning 2025 – Software Engineering Portfolio
 
-<strong>A project-based journey focused on shipping real UI features with clean JavaScript and consistent iteration.</strong><br/>
+<strong>A project-based journey focused on full-stack development, algorithms, and clean software architecture.</strong><br/>
 <p>
-  <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=fff" />
-  <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=fff" />
+  <img alt="C++" src="https://img.shields.io/badge/C++-00599C?logo=c%2B%2B&logoColor=white" />
+  <img alt="Java" src="https://img.shields.io/badge/Java-ED8B00?logo=openjdk&logoColor=white" />
   <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" />
-  <img alt="Day.js" src="https://img.shields.io/badge/Day.js-FF5F5F?logo=javascript&logoColor=fff" />
-  <img alt="Git" src="https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff" />
+  <img alt="React" src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB" />
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white" />
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-43853D?logo=node.js&logoColor=white" />
+  <img alt="MongoDB" src="https://img.shields.io/badge/MongoDB-4EA94B?logo=mongodb&logoColor=white" />
 </p>
 
 [Live Project Hub ↗](https://adityashahhhwal.github.io/learning-2025/)
@@ -19,10 +21,12 @@
 
 ## Recruiter Snapshot
 
-- **Target roles:** Frontend Intern / Junior Software Engineer
-- **Core Competencies:** DOM Architecture, Vanilla JavaScript (ES6+), State Management, Algorithmic Problem Solving, and Responsive UI
-- **What this repo demonstrates:** A track record of shipping real features, consistent iteration, resolving complex bugs, and writing maintainable code without relying heavily on frameworks.
-- **Status:** Active (latest updates pushed in Feb 2026)
+- **Education:** B.Tech in Computer Science Engineering, AKTU University (Expected 2028)
+- **Target roles:** Software Engineer / Full Stack Developer
+- **Problem Solving:** Actively practicing DSA on LeetCode (50+ problems solved across arrays, strings, DP, and recursion).
+- **Core Competencies:** Data Structures & Algorithms, Object-Oriented Programming (OOP), Full-Stack Architecture, RESTful APIs, and Database Management.
+- **What this repo demonstrates:** A track record of shipping real features, consistent iteration, resolving complex bugs, and writing maintainable code based on core CS fundamentals.
+- **Status:** Active
 
 ---
 
@@ -96,13 +100,13 @@ This commit trail highlights practical iteration, debugging, and refactoring dis
 
 ---
 
-## Tech Stack
+## Technical Skills
 
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- Day.js
-- Git + GitHub Pages
+- **Languages:** C++, Java, JavaScript (ES6+)
+- **Frontend Frameworks:** React, Next.js, HTML5, CSS3
+- **Backend & Database:** Node.js, Express, MongoDB
+- **Core CS:** Data Structures & Algorithms, Operating Systems, DBMS, Computer Networks, OOP
+- **Tools:** Git, GitHub, Deployment (Domain routing + HTTPS)
 
 ---
 
@@ -114,11 +118,11 @@ This commit trail highlights practical iteration, debugging, and refactoring dis
 
 ---
 
-## What I’m Building Next
+## Active & Upcoming Projects
 
-- Deeper JavaScript architecture patterns (modularity, maintainability)
-- Backend fundamentals with Node.js + Express
-- API integration projects and stronger testing habits
+- **Disaster Management Platform:** Designing a structured disaster response interface with scalable frontend components and modular architecture.
+- **Finance Tracker Application:** Developing a full-stack personal finance tracking system using Node.js and MongoDB with RESTful API integration.
+- **Advanced DSA:** Continuing to solve Medium and Hard-level algorithmic problems on LeetCode.
 
 ---
 
@@ -130,4 +134,4 @@ This commit trail highlights practical iteration, debugging, and refactoring dis
 
 ---
 
-<sub>Open to internship opportunities and collaborative frontend projects.</sub>
+<sub>Open to Software Engineering internships and collaborative open-source projects.</sub>
