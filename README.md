@@ -52,7 +52,7 @@ https://adityashahhhwal.github.io/learning-2025/05-amazon-project/javascript-ama
 ### 2) Personal Portfolio Website
 
 **Live:**
-adityashahwal.me
+https://adityashahwal.me
 
 **Key engineering highlights:**
 - Responsive desktop + hamburger navigation
@@ -83,7 +83,7 @@ https://adityashahhhwal.github.io/learning-2025/07-js-game/
 | Rock Paper Scissors | https://adityashahhhwal.github.io/learning-2025/03-rock-paper-scissors/ | Conditional logic, score flow, UI updates |
 | To-Do List | https://adityashahhhwal.github.io/learning-2025/04-todo-list/ | Dynamic rendering, list state management |
 | Amazon Project | https://adityashahhhwal.github.io/learning-2025/05-amazon-project/javascript-amazon-project/amazon.html | Modular JS architecture, cart + checkout logic |
-| Portfolio Site | https://adityashahhhwal.github.io/learning-2025/06-portfolio-project/ | Responsive UI, theming, content presentation |
+| Portfolio Site | https://adityashahwal.me | Responsive UI, theming, content presentation |
 | Javascript Snake Game | https://adityashahhhwal.github.io/learning-2025/07-js-game/ | Game loops, 2D Arrays, Collision Algorithms, State Management |
 
 ---
