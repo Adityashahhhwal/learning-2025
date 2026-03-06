@@ -1,26 +1,32 @@
 # 02 – Simple Calculator
 
-A fully functional browser calculator built with Vanilla JavaScript.
+A browser calculator that builds a mathematical expression string and evaluates it, with the last calculation persisted across page refreshes.
 
 ## Live Demo
 [Open ↗](https://adityashahhhwal.github.io/learning-2025/02-calculator/)
 
 ## Features
-- Basic arithmetic: addition, subtraction, multiplication, division
-- Chained operations with correct operator precedence
-- Clear / reset functionality
-- Keyboard-friendly input handling
-- Display updates in real time as the user types
+- Digit buttons (0–9), operators (+, -, *, /), decimal point
+- `=` evaluates the full expression
+- Clear button resets the display and removes the saved state
+- Expression is saved to `localStorage` so it survives a page refresh
 
 ## Built With
 - HTML5
-- CSS3 (Flexbox / Grid layout)
-- Vanilla JavaScript (ES6)
+- CSS3
+- Vanilla JavaScript
+
+## How It Works
+- Each button press appends its value to a `calculation` string (`addToCalculation`)
+- `calculateResult()` calls `eval(calculation)` to produce the result
+- `localStorage` is used to persist the current expression between sessions
+
+> **Note:** `eval()` is used here intentionally as a learning exercise. The code itself includes a comment noting it should not be used in real-world projects due to security risks.
 
 ## What I Practiced
-- Managing **UI state** (current operand, previous operand, operator) without a framework
-- Handling **edge cases**: dividing by zero, repeated operator presses, decimal points
-- Separating display logic from calculation logic
+- `localStorage.setItem` / `getItem` / `removeItem` for simple state persistence
+- Building and mutating a string to represent a live expression
+- Separating `addToCalculation`, `calculateResult`, and `clearCalculation` into distinct functions
 
 ---
 *Part of the [Learning 2025](https://github.com/Adityashahhhwal/learning-2025) portfolio.*

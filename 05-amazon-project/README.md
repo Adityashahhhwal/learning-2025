@@ -16,23 +16,26 @@ A multi-page e-commerce application modelled on Amazon's shopping and checkout f
 ## Architecture
 ```
 data/
-  products.js        — fetches products from backend API, exposes lookup helpers
-  cart.js            — cart state, localStorage persistence, quantity normalisation
+  products.js        — OOP Product/Clothing classes, fetch-based loader, lookup helpers
+  cart.js            — cart state, localStorage persistence, quantity normalisation, XHR loadCart
   deliveryOptions.js — shipping option definitions
 scripts/
-  amazon.js          — renders catalog, handles add-to-cart
-  checkout.js        — wires checkout rendering, payment summary updates
+  amazon.js          — renders catalog from fetched products, handles add-to-cart
+  checkout.js        — entry point: wires setOnUpdate + renderCheckoutPage
   Checkout/
-    orderSummary.js  — renders cart rows, delivery choices, re-renders on changes
-    paymentSummary.js — computes item/shipping/tax/total from live cart state
+    orderSummary.js  — renders cart rows and delivery choices, exposes setOnUpdate hook
+    paymentSummary.js — computes items / shipping / tax / total from live cart state
 ```
 
 ## Key Engineering Highlights
-- **State-first, render-after** pattern — mutate state through `cart.js` helpers, then re-render
-- **Cross-component update hook** — `setOnUpdate()` in `orderSummary.js` lets `checkout.js` refresh the payment summary after any order-summary change
-- **Business-day delivery ETA** calculated with `dayjs` (loaded via ESM CDN)
-- **`localStorage` persistence** — cart survives page refreshes
-- **`data-*` / `js-*` conventions** — DOM hooks are stable and decoupled from style classes
+- **OOP product model** — `Product` base class and `Clothing` subclass (`extraInfoHTML`, `getPrice`, `getStarsUrl`) defined in `products.js`
+- **State-first, render-after** — mutate cart state via `cart.js` helpers (`addToCart`, `removeCartItem`, `updateDeliveryOption`), then re-render
+- **`setOnUpdate` hook** — `orderSummary.js` exposes a callback slot that `checkout.js` fills with `renderPaymentSummary`, keeping the two modules decoupled
+- **`normalizeQuantity`** — clamps input to 1–10, floors decimals, returns `0` to signal a removal
+- **Business-day delivery ETA** — calculated with `dayjs` (loaded via ESM CDN)
+- **Dual async patterns** — `loadProductsFetch` (Fetch + Promises) and `loadCart` (XHR) both used, demonstrating old and new approaches side by side
+- **`localStorage`** — cart persisted as JSON, survives page refreshes
+- **`data-*` / `js-*` conventions** — DOM hooks are decoupled from style classes
 
 ## Built With
 - HTML5 / CSS3
