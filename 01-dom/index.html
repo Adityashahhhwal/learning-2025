@@ -10,7 +10,7 @@
             margin-left: 10px;
             padding: 7px 13px;
             background-color: rgb(194, 191, 191);
-            border: none;
+            border: 2px solid rgb(21, 20, 20);
             font-size: large;
             font-weight: 300;
             font-family: Arial, Helvetica, sans-serif;
@@ -18,16 +18,25 @@
             cursor: pointer;
         }
         .js-gaming.clicked,.js-music.clicked,.js-tech.clicked {
-            background-color: black;
+            background-color: rgb(10, 84, 159);
             color: white;
+        }
+        main{
+            display: flex;
+            justify-content: center;  
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
         }
     </style>
 </head>
 
 <body>
-    <button class="js-gaming" onclick="response(event)">Gaming</button>
-    <button class="js-tech" onclick="response(event)">tech</button>
-    <button class="js-music" onclick="response(event)">music</button>
+    <main>
+        <button class="js-gaming" onclick="response(event)">Gaming</button>
+        <button class="js-tech" onclick="response(event)">tech</button>
+        <button class="js-music" onclick="response(event)">music</button>
+    </main>
     <script>
         function response(event){
             // Remove 'clicked' class from all buttons
