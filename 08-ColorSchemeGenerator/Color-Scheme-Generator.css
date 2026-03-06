@@ -89,7 +89,7 @@ input[type='color'] {
 
 /* Get color scheme button */
 .color-btn {
-  width: 123px;
+  width: 123px; 
   height: 42px;
   flex-shrink: 0;
   background: #ffffff;
