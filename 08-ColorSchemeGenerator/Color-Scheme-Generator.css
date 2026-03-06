@@ -4,15 +4,16 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html {
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body {
-  max-width: 550px;
-  height: 70vh;
-  margin: 15vh auto 0;
+  width: 550px;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   font-family: 'Inter', sans-serif;
