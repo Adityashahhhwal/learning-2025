@@ -25,34 +25,32 @@
 
     <header>
       <div class="color-select">
-        <input id="color-picker" type="color" value="#ff0000" />
+        <div class="color-picker-wrapper">
+          <input id="color-picker" type="color" value="#f55a5a" />
+        </div>
         <select id="mode-select" class="mode-names"></select>
         <button id="get-button" class="color-btn">Get color scheme</button>
       </div>
     </header>
 
+    <button id="theme-toggle" class="theme-toggle" title="Toggle dark mode">
+      <img id="theme-icon" src="theme_light.png" alt="Toggle theme" />
+    </button>
+
     <main>
       <div id="color-palette-container" class="color-palette-container">
-        <div class="color-palette-column">
-          <div class="color-palette"></div>
-          <div class="color-palette-value">#000000</div>
-        </div>
-        <div class="color-palette-column">
-          <div class="color-palette"></div>
-          <div class="color-palette-value">#000000</div>
-        </div>
-        <div class="color-palette-column">
-          <div class="color-palette"></div>
-          <div class="color-palette-value">#000000</div>
-        </div>
-        <div class="color-palette-column">
-          <div class="color-palette"></div>
-          <div class="color-palette-value">#000000</div>
-        </div>
-        <div class="color-palette-column">
-          <div class="color-palette"></div>
-          <div class="color-palette-value">#000000</div>
-        </div>
+        <div class="color-palette" style="background-color: #F55A5A"></div>
+        <div class="color-palette" style="background-color: #2B283A"></div>
+        <div class="color-palette" style="background-color: #FBF3AB"></div>
+        <div class="color-palette" style="background-color: #AAD1B6"></div>
+        <div class="color-palette" style="background-color: #A626D3"></div>
+      </div>
+      <div id="hex-footer" class="hex-footer">
+        <span class="color-palette-value" data-copy="#F55A5A" onclick="copyToClipboard(this)">#F55A5A</span>
+        <span class="color-palette-value" data-copy="#2B283A" onclick="copyToClipboard(this)">#2B283A</span>
+        <span class="color-palette-value" data-copy="#FBF3AB" onclick="copyToClipboard(this)">#FBF3AB</span>
+        <span class="color-palette-value" data-copy="#AAD1B6" onclick="copyToClipboard(this)">#AAD1B6</span>
+        <span class="color-palette-value" data-copy="#A626D3" onclick="copyToClipboard(this)">#A626D3</span>
       </div>
     </main>
 

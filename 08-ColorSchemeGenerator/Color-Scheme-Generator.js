@@ -1,82 +1,70 @@
-/* colorPicker */
 const colorInput = document.getElementById('color-picker')
 const modeNames = document.getElementById('mode-select')
 const colorBtn = document.getElementById('get-button')
 const colorPaletteContainer = document.getElementById('color-palette-container')
+const hexFooter = document.getElementById('hex-footer')
+const themeToggle = document.getElementById('theme-toggle')
 
-// MODE CHOICE
+const themeIcon = document.getElementById('theme-icon')
 
-const modeChoices = ['monochrome', 'monochrome-dark', 'monochrome-light', 'analogic', 'complement', 'analogic-complement', 'triad', 'quad']
+themeToggle.addEventListener('click', () => {
+  if (themeIcon.classList.contains('spinning')) return
 
-let modeChoicesHtml = ``
+  themeIcon.classList.add('spinning')
 
-modeChoices.forEach(mode => {
-  let modeUpperCase = mode[0].toUpperCase() + mode.slice(1)
+  // At 180deg midpoint: swap image + toggle dark so theme fades in during second half of spin
+  setTimeout(() => {
+    const isDark = document.body.classList.toggle('dark')
+    themeIcon.src = isDark ? 'theme_dark.png' : 'theme_light.png'
+  }, 300) // half of 600ms animation
 
-  modeChoicesHtml += `
-    <option value="${mode}">${modeUpperCase}</option>
-  `
+  themeIcon.addEventListener('animationend', () => {
+    themeIcon.classList.remove('spinning')
+  }, { once: true })
 })
 
-modeNames.innerHTML = modeChoicesHtml
+const modeChoices = [
+  'monochrome', 'monochrome-dark', 'monochrome-light',
+  'analogic', 'complement', 'analogic-complement', 'triad', 'quad'
+]
 
+modeNames.innerHTML = modeChoices
+  .map(mode => `<option value="${mode}">${mode[0].toUpperCase() + mode.slice(1)}</option>`)
+  .join('')
 
 colorBtn.addEventListener('click', getColorScheme)
 
 function getColorScheme() {
+  const hex = colorInput.value.slice(1)
+  const mode = modeNames.value
 
-  const modeNamesValue = modeNames.value
-  const colorInputHexValue = colorInput.value.slice(1)
-
-  fetch(`https://www.thecolorapi.com/scheme?hex=${colorInputHexValue}&format=json&mode=${modeNamesValue}&count=5`)
+  fetch(`https://www.thecolorapi.com/scheme?hex=${hex}&format=json&mode=${mode}&count=5`)
     .then(res => res.json())
-    .then(data => {
-      renderColors(data)
-    })
+    .then(data => renderColors(data))
 }
 
 function renderColors(data) {
+  const colors = data.colors
 
-  const colorsArr = data.colors
+  colorPaletteContainer.innerHTML = colors
+    .map(c => `<div class="color-palette" style="background-color: ${c.hex.value}"></div>`)
+    .join('')
 
-  let colorHtml = ``
-
-  colorsArr.forEach(color => {
-
-    const colorHexValue = color.hex.value
-
-    colorHtml += `
-      <div class="color-palette-column">
-        <div class="color-palette" style="background-color: ${colorHexValue}"></div>
-        <div class="color-palette-value">
-          <span data-copy='${colorHexValue}' onclick='copyToClipboard(this)'>${colorHexValue}</span>
-        </div>
-      </div>
-    `
-  })
-
-  colorPaletteContainer.innerHTML = colorHtml
+  hexFooter.innerHTML = colors
+    .map(c => `<span class="color-palette-value" data-copy="${c.hex.value}" onclick="copyToClipboard(this)">${c.hex.value}</span>`)
+    .join('')
 }
 
-function renderColorValue(text) {
-  text.parentElement.classList.remove('copy-text')
-  getColorScheme()
-}
-
-function copyToClipboard(text) {
-  console.log(text)
-  navigator.clipboard.writeText(text.dataset.copy)
+function copyToClipboard(el) {
+  navigator.clipboard.writeText(el.dataset.copy)
     .then(() => {
-
-      text.parentElement.classList.add('copy-text')
-
-      text.innerText = `Copied`
+      el.classList.add('copy-text')
+      el.innerText = 'Copied'
 
       setTimeout(() => {
-        renderColorValue(text)
+        el.classList.remove('copy-text')
+        el.innerText = el.dataset.copy
       }, 1000)
-
-      console.log('Text copied to clipboard')
     })
-    .catch(err => console.error('Could not copy text: ', err));
+    .catch(err => console.error('Could not copy text:', err))
 }
