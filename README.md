@@ -85,11 +85,13 @@ https://adityashahhhwal.github.io/learning-2025/07-js-game/
 | Amazon Project | https://adityashahhhwal.github.io/learning-2025/05-amazon-project/javascript-amazon-project/amazon.html | Modular JS architecture, cart + checkout logic |
 | Portfolio Site | https://adityashahwal.me | Responsive UI, theming, content presentation |
 | Javascript Snake Game | https://adityashahhhwal.github.io/learning-2025/07-js-game/ | Game loops, 2D Arrays, Collision Algorithms, State Management |
+| Color Scheme Generator | https://adityashahhhwal.github.io/learning-2025/08-ColorSchemeGenerator/ | Fetch API, dark mode, CSS animations, clipboard API |
 
 ---
 
-## Recent Commit-Based Progress (Feb 2026)
+## Recent Commit-Based Progress (Mar 2026)
 
+- **2026-03-06:** Built `08-ColorSchemeGenerator` — fetches 5-color palettes from the TheColorAPI, dark/light mode toggle with spin animation, clipboard copy with visual feedback, and pixel-perfect Figma implementation.
 - **2026-02-22:** Debugged and polished `07-js-game` (Snake Game) logic, including wall collisions, preventing self-cannibalization, ensuring food doesn't spawn on the snake body, and adding a persistent High Score tracking feature.
 - **2026-02-13:** Portfolio improvements (layout/content/style polish), theme toggle enhancements, and code readability refactors
 - **2026-02-12:** Added async cart loading path and started object-oriented cart structure exploration (`cartOop.js`)
