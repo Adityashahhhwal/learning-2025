@@ -31,4 +31,4 @@ A classic, retro-style Snake game built entirely with Vanilla JavaScript, HTML5,
 - **Performance**: Clearing the board `innerHTML` and redrawing strictly what is necessary each frame without causing browser memory leaks.
 
 ---
-*Part of my [Learning 2025](https://github.com/Adityashahhhwal/learning-2025) Frontend Engineering Portfolio.*
+*Part of the [Learning 2025](https://github.com/Adityashahhhwal/learning-2025) Frontend Engineering Portfolio.*
