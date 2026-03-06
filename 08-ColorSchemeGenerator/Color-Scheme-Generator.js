@@ -16,12 +16,48 @@ themeToggle.addEventListener('click', () => {
   setTimeout(() => {
     const isDark = document.body.classList.toggle('dark')
     themeIcon.src = isDark ? 'theme_dark.png' : 'theme_light.png'
+    // Remove tint in dark mode, restore it in light mode
+    if (isDark) {
+      document.documentElement.style.background = ''
+    } else {
+      applyBgTint()
+    }
   }, 300) // half of 600ms animation
 
   themeIcon.addEventListener('animationend', () => {
     themeIcon.classList.remove('spinning')
   }, { once: true })
 })
+
+// Convert hex to HSL and return a very light tinted background
+function hexToLightBg(hex) {
+  const r = parseInt(hex.slice(1, 3), 16) / 255
+  const g = parseInt(hex.slice(3, 5), 16) / 255
+  const b = parseInt(hex.slice(5, 7), 16) / 255
+  const max = Math.max(r, g, b), min = Math.min(r, g, b)
+  let h, s, l = (max + min) / 2
+  if (max === min) {
+    h = s = 0
+  } else {
+    const d = max - min
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break
+      case g: h = ((b - r) / d + 2) / 6; break
+      case b: h = ((r - g) / d + 4) / 6; break
+    }
+  }
+  return `hsl(${Math.round(h * 360)}, ${Math.round(s * 40)}%, 95%)`
+}
+
+function applyBgTint() {
+  if (!document.body.classList.contains('dark')) {
+    document.documentElement.style.background = hexToLightBg(colorInput.value)
+  }
+}
+
+colorInput.addEventListener('input', applyBgTint)
+applyBgTint() // apply on load
 
 const modeChoices = [
   'monochrome', 'monochrome-dark', 'monochrome-light',
