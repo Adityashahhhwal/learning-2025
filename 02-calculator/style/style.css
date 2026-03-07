@@ -11,6 +11,8 @@
 
         .calculator {
           width: fit-content;
+          min-width: clamp(300px, 50vw, 400px);
+          min-height: clamp(400px, 50vh, 500px);
         }
 
     p{
