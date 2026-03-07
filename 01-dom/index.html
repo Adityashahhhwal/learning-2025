@@ -6,23 +6,26 @@
     <title>Document</title>
     <style>
         .js-gaming, .js-music, .js-tech {
-            margin-top: 20px;
-            margin-left: 10px;
-            padding: 7px 13px;
-            background-color: rgb(194, 191, 191);
+            background-color: rgb(207, 200, 200);
             border: 2px solid rgb(21, 20, 20);
-            font-size: large;
-            font-weight: 300;
-            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(0.875rem, 2vw, 1.5rem);
+            font-weight: 500;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             border-radius: 8px;
             cursor: pointer;
+            min-width: clamp(80px, 15vw, 140px);
+            min-height: clamp(40px, 5vw, 50px);
+            transition: all 0.3s ease-in-out;
         }
         .js-gaming.clicked,.js-music.clicked,.js-tech.clicked {
             background-color: rgb(10, 84, 159);
             color: white;
+            transform: scale(1.13);
         }
         main{
             display: flex;
+            gap: 18px;
+            flex-wrap: wrap;    
             justify-content: center;  
             align-items: center;
             min-height: 100vh;
@@ -33,20 +36,10 @@
 
 <body>
     <main>
-        <button class="js-gaming" onclick="response(event)">Gaming</button>
-        <button class="js-tech" onclick="response(event)">tech</button>
-        <button class="js-music" onclick="response(event)">music</button>
+        <button class="js-gaming" onclick="response(event)">Aditya</button>
+        <button class="js-tech" onclick="response(event)">Kumar</button>
+        <button class="js-music" onclick="response(event)">Shahwal</button>
     </main>
-    <script>
-        function response(event){
-            // Remove 'clicked' class from all buttons
-            document.querySelector('.js-gaming').classList.remove('clicked');
-            document.querySelector('.js-tech').classList.remove('clicked');
-            document.querySelector('.js-music').classList.remove('clicked');
-            
-            // Add 'clicked' class to the button that was clicked
-            event.target.classList.add('clicked');
-        }
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>
