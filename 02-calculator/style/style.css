@@ -38,15 +38,21 @@
       background-color: #FF9500; /* Orange for operators */
       color: white;
     }
-
     .clear-button {
-      min-height: 56px;
-      aspect-ratio: auto;
-      font-size: clamp(16px, 4vw, 20px);
-      border-radius: 999px;
-      background-color: #A6A6A6; /* Light gray for clear */
-      color: black;
-    }
+          display: block;
+          font-weight: 700;
+          margin: 25px auto 0;
+          min-height: 56px;
+          width: 60%;
+          max-width: 160px;
+          min-width: 120px;
+          aspect-ratio: auto;
+          font-size: clamp(18px, 5vw, 24px);
+          padding: 0;
+          border-radius: 999px;
+          background-color: #f5f2f2; /* Light gray for clear */
+          color: black;
+        }
 
     #display {
       font-size: clamp(28px, 8vw, 40px);
