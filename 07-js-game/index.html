@@ -3,25 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Snake Game</title>
+    <title>Retro Snake Console</title>
     <link rel="stylesheet" href="Js-Game.css" />
-    <script src="Snake-Game.js" defer></script>
+    <script type="module" src="Snake-Game.js" defer></script>
   </head>
   <body>
-    <div>
-      <div class="scores">
-        <h1 id="score">000</h1>
-        <h1 id="highScore">000</h1>
-      </div>
-      <div class="game-border-1">
-        <div class="game-border-2">
-          <div class="game-border-3">
-            <div id="game-board"></div>
+    <main class="game-shell">
+      <section class="console" aria-label="Retro snake arcade game">
+        <header class="hud">
+          <div class="hud-card">
+            <span class="hud-label">Score</span>
+            <strong id="score-value" class="hud-value">0000</strong>
           </div>
-        </div>
-      </div>
-    </div>
-    <h1 id="instruction-text">Press spacebar to start the game</h1>
-    <img id="logo" src="snake-game-ai-gen.png" alt="snake-logo" />
+
+          <div class="hud-card hud-card--center">
+            <span class="hud-label">Level</span>
+            <strong id="level-value" class="hud-value">01</strong>
+          </div>
+
+          <div class="hud-card hud-card--lives">
+            <span class="hud-label">Lives</span>
+            <div id="lives-display" class="lives-display" aria-label="Lives remaining"></div>
+          </div>
+        </header>
+
+        <section class="board-shell">
+          <div class="board-bar">
+            <p class="board-badge">
+              <span class="board-badge__label">State</span>
+              <span id="state-value" class="board-badge__value">Idle</span>
+            </p>
+
+            <p class="board-badge board-badge--best">
+              <span class="board-badge__label">Best</span>
+              <span id="high-score-value" class="board-badge__value">0000</span>
+            </p>
+          </div>
+
+          <div class="board-frame">
+            <div
+              id="game-board"
+              class="game-board"
+              role="grid"
+              aria-label="Snake game board"
+            ></div>
+
+            <div id="game-overlay" class="overlay" aria-live="polite">
+              <p id="overlay-kicker" class="overlay-kicker">Retro Snake</p>
+              <h1 id="overlay-title" class="overlay-title">Press Space to Start</h1>
+              <p id="overlay-text" class="overlay-text">
+                Eat the neon fruit, avoid the walls, and chase super food for
+                bonus growth.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <footer class="status-panel">
+          <p id="status-text" class="status-text">
+            Arrow keys move. Press Space to start and P to pause.
+          </p>
+          <p class="controls-hint">Super food appears after every 4 normal bites.</p>
+        </footer>
+      </section>
+    </main>
   </body>
 </html>

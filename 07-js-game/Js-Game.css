@@ -1,115 +1,337 @@
-/* Import retro pixel font */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
-/* Main page layout */
+:root {
+  --bg: #08102b;
+  --bg-glow: #16295f;
+  --panel: #1d2c5e;
+  --panel-deep: #18244c;
+  --panel-edge: #41558e;
+  --screen: #26386c;
+  --screen-shadow: #1f2c55;
+  --grid-line: rgba(221, 230, 255, 0.08);
+  --grid-highlight: rgba(255, 255, 255, 0.05);
+  --text: #c9d6ff;
+  --muted: #90a3dd;
+  --snake: #74d63d;
+  --snake-head: #9bf55b;
+  --food: #ff6686;
+  --super-food: #ffd65a;
+  --heart-on: #ff4f73;
+  --heart-off: #26345f;
+  --boost-ring: rgba(255, 217, 92, 0.45);
+  --overlay: rgba(7, 12, 32, 0.72);
+  --cell-size: clamp(22px, min(3.25vh, 2.35vw), 28px);
+  --board-size: calc(var(--cell-size) * 20);
+  --shell-width: min(92vw, calc(var(--board-size) + 7rem));
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  display: flex;
-  align-items: center;
-  /* Vertically center the game */
-  justify-content: center;
-  /* Horizontally center the game */
-  height: clamp(10vh, 100dvh, 100svh);
-  /* Full screen height */
+  min-height: 100dvh;
   margin: 0;
-  font-family: 'VT323', monospace;
-  /* Apply retro font */
-}
-
-/* Base background colors */
-body,
-.snake {
-  background-color: #414141;
-  /* Dark gray for page background and snake body */
-}
-
-/* The actual playable area */
-#game-board {
-  border-radius: 100px;
   display: grid;
-  grid-template-columns: repeat(20, 20px);
-  /* 20 columns, each 20px wide */
-  grid-template-rows: repeat(20, 20px);
-  /* 20 rows, each 20px tall */
-  margin: 5px;
+  place-items: center;
+  padding: 1.75rem;
+  background:
+    radial-gradient(circle at top, rgba(73, 110, 205, 0.26), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(63, 215, 194, 0.14), transparent 22%),
+    linear-gradient(180deg, #091231 0%, #071025 100%);
+  color: var(--text);
+  font-family: 'VT323', monospace;
 }
 
-/* Outer thick border to look like an old game console */
-.game-border-1 {
-  border: #595f43 solid 10px;
-  border-radius: 30px;
-  box-shadow: inset 0 0 0 10px #595f43;
+.game-shell {
+  width: var(--shell-width);
 }
 
-/* Middle decorative border */
-.game-border-2 {
-  border: #abb78a solid 8px;
-  border-radius: 26px;
-  box-shadow: inset 0 0 0 10px #abb78a;
+.console {
+  position: relative;
+  padding: 1.15rem;
+  border: 3px solid var(--panel-edge);
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(180deg, rgba(75, 98, 163, 0.18), transparent 35%),
+    linear-gradient(180deg, #243567 0%, #192754 100%);
+  box-shadow:
+    inset 0 0 0 5px rgba(116, 142, 212, 0.12),
+    0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
-/* Inner border that serves as the immediate game frame */
-.game-border-3 {
-  border: #8b966c solid 30px;
-  border-radius: 20px;
-  box-shadow: inset 0 0 0 5px #8b966c;
+.hud {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
 }
 
-/* Start/Game Over screen text */
-#instruction-text {
-  position: absolute;
-  top: 60%;
-  color: #333;
-  width: 300px;
-  text-align: center;
-  text-transform: capitalize;
-  padding: 30px;
-  margin: 0;
+.hud-card {
+  min-height: 100px;
+  padding: 0.95rem 1.1rem;
+  border: 2px solid rgba(141, 165, 233, 0.18);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(61, 82, 143, 0.55), rgba(37, 53, 99, 0.82));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.45rem;
 }
 
-/* Score display container */
-.scores {
+.hud-card--center {
+  align-items: center;
+}
+
+.hud-card--lives {
+  align-items: flex-end;
+}
+
+.hud-label,
+.board-badge__label,
+.controls-hint {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hud-value,
+.board-badge__value {
+  font-size: clamp(2rem, 3vw, 2.9rem);
+  color: var(--text);
+  letter-spacing: 0.08em;
+}
+
+.lives-display {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.heart {
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--heart-off);
+  text-shadow: 0 0 0 transparent;
+  transition: transform 160ms ease, color 160ms ease, text-shadow 160ms ease;
+}
+
+.heart.is-active {
+  color: var(--heart-on);
+  text-shadow: 0 0 16px rgba(255, 79, 115, 0.55);
+}
+
+.board-shell {
+  border: 2px solid rgba(141, 165, 233, 0.18);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(50, 70, 124, 0.72), rgba(31, 44, 84, 0.95));
+  overflow: hidden;
+}
+
+.board-bar {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 2px solid rgba(141, 165, 233, 0.14);
+  background: rgba(17, 26, 57, 0.2);
 }
 
-/* Current score styling */
-#score {
-  color: #abb78a;
+.board-badge {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
 }
 
-#score,
-#highScore {
-  font-size: 40px;
-  font-weight: bolder;
-  margin: 10px 0;
+.board-badge--best {
+  justify-content: flex-end;
 }
 
-/* High score styling (currently hidden via display: none) */
-#highScore {
-  color: #d8ddca;
+.board-frame {
+  position: relative;
+  padding: 1rem;
+}
+
+.game-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(20, var(--cell-size));
+  grid-template-rows: repeat(20, var(--cell-size));
+  width: var(--board-size);
+  height: var(--board-size);
+  margin: 0 auto;
+  border: 3px solid rgba(123, 142, 206, 0.34);
+  border-radius: 14px;
+  overflow: hidden;
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 55%),
+    linear-gradient(180deg, #314575 0%, #2a3b6a 100%);
+  background-size:
+    var(--cell-size) var(--cell-size),
+    var(--cell-size) var(--cell-size),
+    100% 100%,
+    100% 100%;
+  box-shadow:
+    inset 0 0 0 4px rgba(255, 255, 255, 0.05),
+    inset 0 -18px 32px rgba(0, 0, 0, 0.15);
+}
+
+.game-board.is-boosted {
+  box-shadow:
+    inset 0 0 0 4px rgba(255, 255, 255, 0.05),
+    inset 0 -18px 32px rgba(0, 0, 0, 0.15),
+    0 0 30px var(--boost-ring);
+}
+
+.entity {
+  margin: 2px;
+  border-radius: 6px;
+}
+
+.snake-segment {
+  background: linear-gradient(180deg, #86ea45 0%, var(--snake) 100%);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.snake-head {
+  position: relative;
+  background:
+    radial-gradient(circle at 62% 38%, #17233f 0 2px, transparent 2.2px),
+    radial-gradient(circle at 62% 62%, #17233f 0 2px, transparent 2.2px),
+    linear-gradient(180deg, #b4ff73 0%, var(--snake-head) 100%);
+  box-shadow:
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+    0 0 14px rgba(155, 245, 91, 0.18);
+}
+
+.snake-segment.is-boosted,
+.snake-head.is-boosted {
+  outline: 2px solid rgba(255, 235, 152, 0.45);
+  box-shadow:
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+    0 0 18px rgba(255, 235, 152, 0.26);
+}
+
+.food {
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.35), transparent 35%),
+    linear-gradient(180deg, #ff88a0 0%, var(--food) 100%);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.food-super {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35), transparent 35%),
+    linear-gradient(180deg, #ffe68e 0%, var(--super-food) 100%);
+  box-shadow:
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(255, 214, 90, 0.4);
+  animation: superPulse 750ms steps(2) infinite;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0.85rem;
+  display: grid;
+  place-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  background: var(--overlay);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.overlay[hidden] {
   display: none;
 }
 
-/* Game screen background color */
-.game-border-3,
-#logo {
-  background-color: #c4cfa3;
-  /* Retro green screen color */
+.overlay-kicker {
+  margin: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: #a6bcff;
+  text-transform: uppercase;
 }
 
-/* Visually separate the snake segments */
-.snake {
-  border: #5a5a5a 1px dotted;
+.overlay-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  letter-spacing: 0.06em;
 }
 
-/* Styling for the food the snake eats */
-.food {
-  background-color: #b42020;
-  /* Red apple color */
-  border: #f1aaaa 2px dashed;
+.overlay-text,
+.status-text {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  color: var(--text);
 }
 
-/* Snake game title logo */
-#logo {
-  position: absolute;
+.status-panel {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1rem 1rem 0.45rem;
+}
+
+.controls-hint {
+  margin: 0;
+}
+
+@keyframes superPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.86);
+  }
+}
+
+@media (min-width: 1200px) and (min-height: 820px) {
+  :root {
+    --cell-size: 28px;
+  }
+}
+
+@media (max-width: 740px) {
+  body {
+    padding: 1rem;
+  }
+
+  .console {
+    padding: 0.85rem;
+  }
+
+  .hud {
+    grid-template-columns: 1fr;
+  }
+
+  .hud-card,
+  .hud-card--center,
+  .hud-card--lives {
+    align-items: flex-start;
+  }
+
+  .board-bar {
+    flex-direction: column;
+  }
+
+  .board-badge--best {
+    justify-content: flex-start;
+  }
+
+  .overlay {
+    padding: 1rem;
+  }
 }
