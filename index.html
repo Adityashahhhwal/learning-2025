@@ -6,94 +6,154 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adityashahhhwal's Projects</title>
   <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #3f37c9;
+      --text-dark: #2b2d42;
+      --text-light: #8d99ae;
+      --bg: #f8f9fa;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f4f6fa;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      color: var(--text-dark);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
     }
 
     header {
-      margin-top: 48px;
-      margin-bottom: 24px;
       text-align: center;
+      margin-bottom: 4rem;
     }
 
     h1 {
-      font-size: 2.5rem;
-      color: #22223b;
-      margin-bottom: 0.5rem;
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #4361ee, #7209b7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     p {
-      color: #4a4e69;
-      margin-top: 0;
+      color: var(--text-light);
+      font-size: 1.25rem;
+      margin: 0;
     }
 
-    ul {
+    .project-grid {
       list-style: none;
       padding: 0;
       margin: 0;
-      max-width: 400px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(67, 97, 238, 0.15);
+      border-color: rgba(67, 97, 238, 0.3);
+    }
+
+    .project-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 1.5rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 600;
+      height: 100%;
+    }
+
+    .project-link span {
+      position: relative;
+    }
+
+    .project-link span::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .project-card:hover .project-link span::after {
       width: 100%;
     }
 
-    li {
-      background: #fff;
-      margin: 12px 0;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-      transition: box-shadow 0.2s;
+    .icon-arrow {
+      color: var(--primary);
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s ease;
     }
 
-    li:hover {
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    }
-
-    a {
-      display: block;
-      padding: 18px 24px;
-      color: #22223b;
-      text-decoration: none;
-      font-size: 1.15rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    a:hover {
-      color: #3a86ff;
+    .project-card:hover .icon-arrow {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
+      .container {
+        padding: 3rem 1.5rem;
       }
-
-      ul {
-        max-width: 95vw;
+      h1 {
+        font-size: 2.25rem;
+      }
+      .project-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Adityashahhhwal's Projects</h1>
-    <p>Welcome! Explore my web projects below.</p>
-  </header>
-  <ul>
-    <li><a href="01-dom/index.html">Toggle effect</a></li>
-    <li><a href="02-calculator/index.html">Simple Calculator</a></li>
-    <li><a href="03-rock-paper-scissors/index.html">Rock Paper Scissors Game</a></li>
-    <li><a href="04-todo-list/index.html">To-Do List App</a></li>
-    <li><a href="05-amazon-project/javascript-amazon-project/amazon.html">Amazon Project</a></li>
-    <li><a href="https://adityashahwal.me">Personal Portfolio Site</a></li>
-    <li><a href="07-js-game/index.html">Javascript Snake Game</a></li>
-  </ul>
+  <div class="container">
+    <header>
+      <h1>Adityashahhhwal's Projects</h1>
+      <p>Welcome! Explore my beautiful web projects below.</p>
+    </header>
+    <ul class="project-grid">
+      <li class="project-card"><a class="project-link" href="01-dom/index.html"><span>Toggle effect</span><span class="icon-arrow">→</span></a></li>
+      <li class="project-card"><a class="project-link" href="02-calculator/index.html"><span>Simple Calculator</span><span class="icon-arrow">→</span></a></li>
+      <li class="project-card"><a class="project-link" href="03-rock-paper-scissors/index.html"><span>Rock Paper Scissors Game</span><span class="icon-arrow">→</span></a></li>
+      <li class="project-card"><a class="project-link" href="04-todo-list/index.html"><span>To-Do List App</span><span class="icon-arrow">→</span></a></li>
+      <li class="project-card"><a class="project-link" href="05-amazon-project/javascript-amazon-project/amazon.html"><span>Amazon Project</span><span class="icon-arrow">→</span></a></li>
+      <li class="project-card"><a class="project-link" href="https://adityashahwal.me" target="_blank"><span>Personal Portfolio Site</span><span class="icon-arrow">↗</span></a></li>
+      <li class="project-card"><a class="project-link" href="07-js-game/index.html"><span>Javascript Snake Game</span><span class="icon-arrow">→</span></a></li>
+      <li class="project-card"><a class="project-link" href="08-ColorSchemeGenerator/index.html"><span>Color Scheme Generator</span><span class="icon-arrow">→</span></a></li>
+    </ul>
+  </div>
 </body>
 
 </html>
