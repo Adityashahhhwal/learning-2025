@@ -362,12 +362,4 @@ footer, .meta-text {
     display: none;
   }
 }
-  
-  body {
-    cursor: auto;
-  }
-  
-  a, button {
-    cursor: pointer;
-  }
 
