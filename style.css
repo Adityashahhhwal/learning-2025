@@ -87,9 +87,18 @@ h1 {
 p {
   color: var(--text-muted);
   font-size: 1.25rem;
-  font-weight: 300; /* Lighter weight for meta/body text */
+  font-weight: 400; /* Increased weight for better readability */
   margin: 0 auto;
   max-width: 65ch; /* Optimal reading width limitation */
+}
+
+footer {
+  margin-top: 5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-family: "JetBrains Mono", monospace;
+  opacity: 0.6;
 }
 
 .project-grid {
