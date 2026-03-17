@@ -78,11 +78,11 @@ https://adityashahhhwal.github.io/learning-2025/07-js-game/
 https://adityashahhhwal.github.io/learning-2025/
 
 **Key engineering highlights:**
-- **Custom Cursor System**: Implemented a performant, lag-free "ball" cursor with a trailing "shooting star" effect using `requestAnimationFrame`.
-- **Advanced Color Theory**: Applied a **Split-Complementary** color scheme (Warm Orange #28deg & Deep Blue-Grey #215deg) for high-contrast, harmonious visuals.
-- **Interactive UI**: Elements feature ripple animations and dynamic hover states that blend with the custom cursor.
-- **Responsive Design**: Mobile-first architecture with touch-friendly adaptations (disabling custom cursor on touch devices) and optimized grid layouts.
-- **Modern Typography**: Integrated Apple's system font stack (San Francisco/Helvetica Neue) for a premium, clean aesthetic.
+- **Custom Cursor System**: Implemented a performant "ball" cursor with a throttled "shooting star" trail effect (max 60fps) using `requestAnimationFrame` and timestamp checks.
+- **SaaS-Style Aesthetic**: Designed a modern, dark-themed interface with **Split-Complementary** colors (Warm Orange & Deep Blue-Grey), subtle gradients, and glassmorphism cards.
+- **Tech Stack Badges**: Integrated dynamic tech stack indicators using JetBrains Mono for specific project context at a glance.
+- **Advanced Typography**: Curated a professional font stack using **Syne** (Headings), **DM Sans** (Body), and **JetBrains Mono** (Code) for high readability and brand identity.
+- **Responsive & Accessible**: Mobile-first grid architecture with touch-friendly adaptations (disabling custom cursor on touch devices) and fluid typography.
 
 ---
 

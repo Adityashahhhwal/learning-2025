@@ -37,7 +37,7 @@
 - Color Generation API: `https://www.thecolorapi.com/` for project 08.
 - Date library via ESM CDN import: `dayjs` in `scripts/Checkout/orderSummary.js`.
 - Browser persistence: `localStorage` is used in multiple apps (`cart`, game score, portfolio theme).
-- Google Fonts & Apple System Fonts loaded directly in CSS.
+- Google Fonts (Syne, DM Sans, JetBrains Mono) loaded directly in CSS.
 
 ## Development workflow
 - Local run: open HTML files with a local static server (Live Server in VS Code works well).
