@@ -4,15 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adityashahhhwal's Projects</title>
+  <title>Adityashahwal's Projects</title>
   <style>
     :root {
-      --primary: #4361ee;
-      --secondary: #3f37c9;
-      --text-dark: #2b2d42;
-      --text-light: #8d99ae;
-      --bg: #f8f9fa;
-      --card-bg: #ffffff;
+      /* Color Theory: Complementary Split
+         Primary Hue: 28deg (Warm Orange)
+         Complementary Hue: 215deg (Deep Blue-Grey)
+      */
+      --hue-primary: 28;
+      --hue-secondary: 215;
+
+      /* Neutral / Background Scales based on Complementary Hue */
+      --bg-dark: hsl(var(--hue-secondary), 25%, 10%);
+      --bg-card: hsl(var(--hue-secondary), 25%, 16%);
+      --bg-gradient-start: hsl(var(--hue-secondary), 20%, 12%);
+      --bg-gradient-end: hsl(var(--hue-secondary), 25%, 8%);
+      
+      --text-light: hsl(var(--hue-secondary), 20%, 88%);
+      --text-muted: hsl(var(--hue-secondary), 15%, 60%);
+      --card-border: hsla(var(--hue-secondary), 30%, 80%, 0.08);
+
+      /* Accent Gradient (Orange Analogous) */
+      --orange-start: hsl(var(--hue-primary), 100%, 50%);       /* #ff7700 */
+      --orange-mid:   hsl(calc(var(--hue-primary) + 15), 100%, 55%); /* #ffaa1a */
+      --orange-end:   hsl(calc(var(--hue-primary) + 30), 100%, 60%); /* #ffcc33 */
+      
+      /* Cursor Accent (Cyan - Triadic/Split Comp relationship) */
+      --accent-cyan: hsl(190, 100%, 50%);
     }
 
     * {
@@ -20,18 +38,18 @@
     }
 
     body {
-      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      font-family: "SF Pro Display", "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+      background: linear-gradient(160deg, var(--bg-gradient-start) 0%, var(--bg-card) 50%, var(--bg-gradient-end) 100%);
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      color: var(--text-dark);
+      color: var(--text-light);
     }
 
     .container {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 4rem 2rem;
+      padding: 2rem 1rem;
     }
 
     header {
@@ -43,15 +61,15 @@
       font-size: 3rem;
       font-weight: 800;
       letter-spacing: -1px;
-      color: var(--text-dark);
       margin-bottom: 1rem;
-      background: linear-gradient(to right, #4361ee, #7209b7);
+      background: linear-gradient(to right, var(--orange-start), var(--orange-mid), var(--orange-end));
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     p {
-      color: var(--text-light);
+      color: var(--text-muted);
       font-size: 1.25rem;
       margin: 0;
     }
@@ -66,18 +84,34 @@
     }
 
     .project-card {
-      background: var(--card-bg);
+      background: var(--bg-card);
       border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--card-border);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       overflow: hidden;
+      position: relative;
+    }
+
+    /* Orange overlay on hover */
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, hsla(var(--hue-primary), 100%, 50%, 0.15) 0%, hsla(calc(var(--hue-primary) + 30), 100%, 50%, 0.08) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 16px;
     }
 
     .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px rgba(67, 97, 238, 0.15);
-      border-color: rgba(67, 97, 238, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px hsla(var(--hue-primary), 100%, 50%, 0.2), 0 4px 12px rgba(0, 0, 0, 0.4);
+      border-color: var(--orange-mid);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
     }
 
     .project-link {
@@ -85,11 +119,18 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.5rem 1.5rem;
-      color: var(--text-dark);
+      color: var(--text-light);
       text-decoration: none;
       font-size: 1.15rem;
       font-weight: 600;
       height: 100%;
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .project-card:hover .project-link {
+      color: #ffffff;
     }
 
     .project-link span {
@@ -103,7 +144,7 @@
       height: 2px;
       bottom: -4px;
       left: 0;
-      background-color: var(--primary);
+      background: linear-gradient(to right, var(--orange-start), var(--orange-end));
       transition: width 0.3s ease;
     }
 
@@ -112,7 +153,10 @@
     }
 
     .icon-arrow {
-      color: var(--primary);
+      background: linear-gradient(to right, var(--orange-start), var(--orange-end));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       opacity: 0;
       transform: translateX(-10px);
       transition: all 0.3s ease;
@@ -121,6 +165,81 @@
     .project-card:hover .icon-arrow {
       opacity: 1;
       transform: translateX(0);
+    }
+    
+    /* Custom Cursor Styles */
+    #cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--accent-cyan);
+      background-color: transparent;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, background-color 0.3s, opacity 0.3s;
+      mix-blend-mode: screen;
+    }
+
+    #cursor.hovered {
+      width: 50px;
+      height: 50px;
+      background-color: transparent;
+      border-color: var(--accent-cyan);
+      opacity: 0; 
+      animation: ripple 1s infinite;
+    }
+
+    @keyframes ripple {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+        border-width: 2px;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+        border-width: 0px;
+      }
+    }
+
+    /* Trail Effect */
+    .cursor-trail {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent-cyan);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      animation: fadeOutTrail 0.5s ease-out forwards;
+      mix-blend-mode: screen;
+      box-shadow: 0 0 4px var(--accent-cyan);
+    }
+
+    @keyframes fadeOutTrail {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(0.2);
+        opacity: 0;
+      }
+    }
+
+    body {
+      cursor: none; /* Hide default cursor */
+    }
+
+    /* Ensure links still show pointer if we want, or keep hidden? 
+       Usually if custom cursor is used, we hide default everywhere. */
+    a, button {
+      cursor: none; 
     }
 
     @media (max-width: 600px) {
@@ -133,20 +252,31 @@
       .project-grid {
         grid-template-columns: 1fr;
       }
+      /* Disable custom cursor on mobile */
+      #cursor {
+        display: none;
+      }
+      body {
+        cursor: auto;
+      }
+      a, button {
+        cursor: pointer;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div id="cursor"></div>
   <div class="container">
     <header>
-      <h1>Adityashahhhwal's Projects</h1>
-      <p>Welcome! Explore my beautiful web projects below.</p>
+      <h1>Aditya Kumar Shahwal's Projects</h1>
+      <p>Explore my web development projects and see what I've been working on.</p>
     </header>
     <ul class="project-grid">
       <li class="project-card"><a class="project-link" href="01-dom/index.html"><span>Toggle effect</span><span class="icon-arrow">→</span></a></li>
       <li class="project-card"><a class="project-link" href="02-calculator/index.html"><span>Simple Calculator</span><span class="icon-arrow">→</span></a></li>
-      <li class="project-card"><a class="project-link" href="03-rock-paper-scissors/index.html"><span>Rock Paper Scissors Game</span><span class="icon-arrow">→</span></a></li>
+      <li class="project-card"><a class="project-link" href="03-rock-paper-scissors/index.html"><span>Rock Paper Scissors</span><span class="icon-arrow">→</span></a></li>
       <li class="project-card"><a class="project-link" href="04-todo-list/index.html"><span>To-Do List App</span><span class="icon-arrow">→</span></a></li>
       <li class="project-card"><a class="project-link" href="05-amazon-project/javascript-amazon-project/amazon.html"><span>Amazon Project</span><span class="icon-arrow">→</span></a></li>
       <li class="project-card"><a class="project-link" href="https://adityashahwal.me" target="_blank"><span>Personal Portfolio Site</span><span class="icon-arrow">↗</span></a></li>
@@ -154,6 +284,49 @@
       <li class="project-card"><a class="project-link" href="08-ColorSchemeGenerator/index.html"><span>Color Scheme Generator</span><span class="icon-arrow">→</span></a></li>
     </ul>
   </div>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const cards = document.querySelectorAll('.project-card');
+
+    let isMoving = false;
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      
+      // Create trail effect on movement
+      if (!isMoving) {
+        requestAnimationFrame(() => {
+          createTrail(e.clientX, e.clientY);
+          isMoving = false;
+        });
+        isMoving = true;
+      }
+    });
+
+    function createTrail(x, y) {
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      trail.style.left = x + 'px';
+      trail.style.top = y + 'px';
+      document.body.appendChild(trail);
+
+      // Remove the trail element after animation ends
+      setTimeout(() => {
+        trail.remove();
+      }, 500);
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        cursor.classList.add('hovered');
+      });
+      card.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hovered');
+      });
+    });
+  </script>
 </body>
 
 </html>
