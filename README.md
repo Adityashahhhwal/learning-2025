@@ -49,16 +49,16 @@ https://adityashahhhwal.github.io/learning-2025/05-amazon-project/javascript-ama
 - [Checkout Screenshots (PDF)](05-amazon-project/javascript-amazon-project/scripts/utils/Checkout.pdf)
 - [Amazon Project Screenshots (PDF)](05-amazon-project/javascript-amazon-project/scripts/utils/Amazon%20Project.pdf)
 
-### 2) Personal Portfolio Website
+### 2) Color Scheme Generator (API & Theming)
 
 **Live:**
-https://adityashahwal.me
+https://adityashahhhwal.github.io/learning-2025/08-ColorSchemeGenerator/
 
 **Key engineering highlights:**
-- Responsive desktop + hamburger navigation
-- Theme toggle with persisted preference in `localStorage`
-- Light/dark asset swapping via `data-light` / `data-dark`
-- Improved project section content and layout refinements
+- **Live API Integration**: Fetches harmonious color palettes from [TheColorAPI](https://www.thecolorapi.com/) based on user seed color and mode.
+- **Advanced State Management**: Handles 8 different harmony modes (Monochrome, Analogic, Triad, etc.) and clipboard interactions.
+- **Dark/Light Mode Engine**: animated toggle icon with crossfade effects and persistent theme application.
+- **Pixel-Perfect CSS**: Flexbox layouts that adapt strictly to a Figma design spec.
 
 ### 3) JavaScript Snake Game (Algorithmic Logic)
 
@@ -71,6 +71,18 @@ https://adityashahhhwal.github.io/learning-2025/07-js-game/
 - Solved recursive edge-cases, guaranteeing food spawns dynamically without overlapping the snake's current coordinates.
 - Managed complex game state (score, high score, directional inputs, active status) completely in Vanilla JS.
 - Cleanly mapped 2D JavaScript array coordinates to dynamic CSS Grid positions for high-performance DOM rendering to minimize layout thrashing.
+
+### 4) Portfolio Hub Interface (Repository Root)
+
+**Live:**
+https://adityashahhhwal.github.io/learning-2025/
+
+**Key engineering highlights:**
+- **Custom Cursor System**: Implemented a performant, lag-free "ball" cursor with a trailing "shooting star" effect using `requestAnimationFrame`.
+- **Advanced Color Theory**: Applied a **Split-Complementary** color scheme (Warm Orange #28deg & Deep Blue-Grey #215deg) for high-contrast, harmonious visuals.
+- **Interactive UI**: Elements feature ripple animations and dynamic hover states that blend with the custom cursor.
+- **Responsive Design**: Mobile-first architecture with touch-friendly adaptations (disabling custom cursor on touch devices) and optimized grid layouts.
+- **Modern Typography**: Integrated Apple's system font stack (San Francisco/Helvetica Neue) for a premium, clean aesthetic.
 
 ---
 

@@ -2,13 +2,14 @@
 
 ## Repo shape and intent
 - This is a static, multi-project learning portfolio. Each numbered folder is a standalone frontend project.
-- Root `index.html` is a simple hub page linking into project folders.
+- Root `index.html` is the portfolio hub, linking into project folders.
+- Root `style.css` contains global styles, custom cursor logic, and theming.
 - Most projects are plain HTML/CSS/JS; no Node build system or package manager is used.
 
 ## Project boundaries
-- `01-dom`, `02-calculator`, `03-rock-paper-scissors`, `04-todo-list`: independent browser apps with direct DOM scripting.
+- `01-dom`, `02-calculator`, `03-rock-paper-scissors`, `04-todo-list`, `07-js-game`: independent browser apps with direct DOM scripting.
 - `05-amazon-project/javascript-amazon-project`: the most structured app, using ES modules and separated data/render logic.
-- `06-portfolio-project`: single-page portfolio with responsive navigation and theme persistence.
+- `08-ColorSchemeGenerator`: Fetch API integration app with dark mode toggle and clipboard access.
 
 ## Amazon project architecture (primary complex area)
 - Entry points:
@@ -33,9 +34,10 @@
 
 ## External integrations and dependencies
 - Product/cart backend API: `https://supersimplebackend.dev/products` and `https://supersimplebackend.dev/cart`.
+- Color Generation API: `https://www.thecolorapi.com/` for project 08.
 - Date library via ESM CDN import: `dayjs` in `scripts/Checkout/orderSummary.js`.
 - Browser persistence: `localStorage` is used in multiple apps (`cart`, game score, portfolio theme).
-- Google Fonts loaded directly in page HTML.
+- Google Fonts & Apple System Fonts loaded directly in CSS.
 
 ## Development workflow
 - Local run: open HTML files with a local static server (Live Server in VS Code works well).
@@ -58,7 +60,8 @@
 - `05-amazon-project/javascript-amazon-project/scripts/Checkout/orderSummary.js`
 - `05-amazon-project/javascript-amazon-project/scripts/Checkout/paymentSummary.js`
 - `05-amazon-project/javascript-amazon-project/data/cart.js`
-- `06-portfolio-project/script.js`
+- `08-ColorSchemeGenerator/Color-Scheme-Generator.js`
+- `style.css` (root theming & cursor logic)
 
 ## Agent tips for fast, safe edits
 - Confirm whether a page is module-based before changing import paths.
