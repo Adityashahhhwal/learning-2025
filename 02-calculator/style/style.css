@@ -1,63 +1,71 @@
 
-    body {
-          background-color: black;
-          margin: 0;
-          min-height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 16px;
+body 
+{
+    background-color: #1e1e1e; /* Dark background for the entire page */
+    color: white;
+    margin: 0;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.calculator {
+    width: min(92vw, 380px);
+    background-color: #222222; /* Darker gray for calculator background */
+    padding: 20px;
+    border-radius: 20px;  
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5), 0 5px 15px rgba(0, 0, 0, 0.3); /* Inner and outer shadow for depth */
+  }
+
+p{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 10px;
+    color: white;
+  }
+
+button {
+  flex: 1;
+  width: auto;
+  min-height: 60px;
+  aspect-ratio: 1 / 1;
+  font-size: clamp(24px, 6vw, 32px);
+  margin: 0;
+  border-radius: 50%;
+  border: none;
+  background-color: #333333; /* Dark gray for numbers */
+  color: white;
+  cursor: pointer;
+}
+.operator {
+  background-color: #FF9500; /* Orange for operators */
+  color: white;
+}
+.clear-button {
+      display: block;
+      font-weight: 700;
+      margin: 20px auto 0;
+      min-height: 50px;
+      width: 100%;
+      max-width: 160px;
+      min-width: 120px;
+      aspect-ratio: 4 / 1;
+      font-size: clamp(18px, 5vw, 24px);
+      padding: 0;
+      border-radius: 25px;
+      background-color: #f5f2f2; /* Light gray for clear */
+      color: #333333;
+      
     }
 
-      .calculator {
-          width: min(92vw, 380px);
-        }
-
-    p{
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 0 0 10px;
-    }
-
-    button {
-      flex: 1;
-      width: auto;
-      min-height: 68px;
-      aspect-ratio: 1;
-      font-size: clamp(24px, 6vw, 32px);
-      margin: 0;
-      border-radius: 50%;
-      border: none;
-      background-color: #333333; /* Dark gray for numbers */
-      color: white;
-      cursor: pointer;
-    }
-
-    .operator {
-      background-color: #FF9500; /* Orange for operators */
-      color: white;
-    }
-    .clear-button {
-          display: block;
-          font-weight: 700;
-          margin: 25px auto 0;
-          min-height: 56px;
-          width: 60%;
-          max-width: 160px;
-          min-width: 120px;
-          aspect-ratio: auto;
-          font-size: clamp(18px, 5vw, 24px);
-          padding: 0;
-          border-radius: 999px;
-          background-color: #f5f2f2; /* Light gray for clear */
-          color: black;
-        }
-
-    #display {
-      font-size: clamp(28px, 8vw, 40px);
-      min-height: 42px;
-      margin-top: 20px;
-      color: white;
-      justify-content: flex-end;
-    }
+#display {
+  font-size: clamp(28px, 8vw, 40px);
+  min-height: 60px;
+  margin-top: 0;
+  color: white;
+  justify-content: flex-end;
+  border-bottom: #1e1e1e 2px solid;
+}
