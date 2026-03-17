@@ -10,7 +10,7 @@
   --bg-dark: hsl(var(--hue-secondary), 25%, 10%);
   --bg-card: hsl(var(--hue-secondary), 25%, 16%);
   /* New Gradient for Cards (SaaS Style) */
-  --bg-card-gradient: linear-gradient(135deg, hsl(var(--hue-secondary), 25%, 18%) 0%, hsl(var(--hue-secondary), 25%, 12%) 100%);
+  --bg-card-gradient: linear-gradient(to bottom, hsl(var(--hue-secondary), 25%, 18%) 0%, hsl(var(--hue-secondary), 25%, 12%) 100%);
 
   --bg-gradient-start: hsl(var(--hue-secondary), 20%, 12%);
   --bg-gradient-end: hsl(var(--hue-secondary), 25%, 8%);
@@ -25,6 +25,11 @@
   --orange-mid:   hsl(calc(var(--hue-primary) + 15), 100%, 55%); /* #ffaa1a */
   --orange-end:   hsl(calc(var(--hue-primary) + 30), 100%, 60%); /* #ffcc33 */
   
+  /* Aliases for Syne Heading */
+  --orange-a: var(--orange-start);
+  --orange-b: var(--orange-mid);
+  --orange-c: var(--orange-end);
+  
   /* Cursor Accent (Cyan - Triadic/Split Comp relationship) */
   --accent-cyan: hsl(190, 100%, 50%);
 }
@@ -34,7 +39,7 @@
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: "DM Sans", sans-serif;
   background: linear-gradient(160deg, var(--bg-gradient-start) 0%, var(--bg-card) 50%, var(--bg-gradient-end) 100%);
   margin: 0;
   padding: 0;
@@ -63,16 +68,17 @@ code, pre {
 
 header {
   text-align: center;
-  margin-bottom: 5rem; /* Increased whitespace for hierarchy */
+  margin-bottom: clamp(2.5rem, 6vw, 5rem);
 }
 
 h1 {
-  font-size: 3.5rem; /* Larger, more impactful hero heading (was 3rem) */
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4rem);
   font-weight: 800;
-  letter-spacing: -0.03em; /* Tighter letter spacing for large text */
+  letter-spacing: -0.03em;
+  line-height: 1.05;
   margin-bottom: 1.5rem;
-  line-height: 1.1;
-  background: linear-gradient(to right, var(--orange-start), var(--orange-mid), var(--orange-end));
+  background: linear-gradient(100deg, var(--orange-a), var(--orange-b), var(--orange-c));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

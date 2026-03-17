@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adityashahwal's Projects</title>
-  <!-- Google Fonts: Inter (headings/body) + JetBrains Mono (coding vibes) -->
+  <!-- Google Fonts: Space Grotesk (headings) + DM Sans (body) + JetBrains Mono (code) + Syne -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,7 +16,7 @@
   <div id="cursor"></div>
   <div class="container">
     <header>
-      <h1>Aditya Kumar Shahwal's Projects</h1>
+      <h1>Aditya Shahwal's Projects</h1>
       <p>Explore my web development projects and see what I've been working on.</p>
     </header>
     <ul class="project-grid">
@@ -35,19 +35,16 @@
     const cursor = document.getElementById('cursor');
     const cards = document.querySelectorAll('.project-card');
 
-    let isMoving = false;
+    let lastTrail = 0;
 
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
-      
-      // Create trail effect on movement
-      if (!isMoving) {
-        requestAnimationFrame(() => {
-          createTrail(e.clientX, e.clientY);
-          isMoving = false;
-        });
-        isMoving = true;
+
+      const now = Date.now();
+      if (now - lastTrail > 50) { // max 1 trail dot per 50ms
+        createTrail(e.clientX, e.clientY);
+        lastTrail = now;
       }
     });
 
