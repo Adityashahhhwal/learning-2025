@@ -9,12 +9,16 @@
   /* Neutral / Background Scales based on Complementary Hue */
   --bg-dark: hsl(var(--hue-secondary), 25%, 10%);
   --bg-card: hsl(var(--hue-secondary), 25%, 16%);
+  /* New Gradient for Cards (SaaS Style) */
+  --bg-card-gradient: linear-gradient(135deg, hsl(var(--hue-secondary), 25%, 18%) 0%, hsl(var(--hue-secondary), 25%, 12%) 100%);
+
   --bg-gradient-start: hsl(var(--hue-secondary), 20%, 12%);
   --bg-gradient-end: hsl(var(--hue-secondary), 25%, 8%);
   
-  --text-light: hsl(var(--hue-secondary), 20%, 88%);
-  --text-muted: hsl(var(--hue-secondary), 15%, 60%);
-  --card-border: hsla(var(--hue-secondary), 30%, 80%, 0.08);
+  /* Increased contrast for text (was 88% / 60%) */
+  --text-light: hsl(var(--hue-secondary), 20%, 96%);
+  --text-muted: hsl(var(--hue-secondary), 10%, 75%);
+  --card-border: hsla(var(--hue-secondary), 30%, 80%, 0.12);
 
   /* Accent Gradient (Orange Analogous) */
   --orange-start: hsl(var(--hue-primary), 100%, 50%);       /* #ff7700 */
@@ -83,7 +87,7 @@ p {
 }
 
 .project-card {
-  background: var(--bg-card);
+  background: var(--bg-card-gradient);
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
   border: 1px solid var(--card-border);
@@ -97,7 +101,7 @@ p {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, hsla(var(--hue-primary), 100%, 50%, 0.15) 0%, hsla(calc(var(--hue-primary) + 30), 100%, 50%, 0.08) 100%);
+  background: linear-gradient(135deg, hsla(var(--hue-primary), 100%, 50%, 0.1) 0%, hsla(calc(var(--hue-primary) + 30), 100%, 50%, 0.05) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: 16px;
@@ -105,7 +109,8 @@ p {
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px hsla(var(--hue-primary), 100%, 50%, 0.2), 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 40px hsla(var(--hue-primary), 100%, 50%, 0.15), 0 4px 12px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, hsl(var(--hue-secondary), 25%, 22%) 0%, hsl(var(--hue-secondary), 25%, 15%) 100%);
   border-color: var(--orange-mid);
 }
 
@@ -132,6 +137,11 @@ p {
   color: #ffffff;
 }
 
+/* Icon Highlight: Cyan */
+.project-link span.icon-arrow {
+  color: var(--accent-cyan);
+}
+
 .project-link span {
   position: relative;
 }
@@ -143,7 +153,7 @@ p {
   height: 2px;
   bottom: -4px;
   left: 0;
-  background: linear-gradient(to right, var(--orange-start), var(--orange-end));
+  background: linear-gradient(to right, var(--accent-cyan), var(--orange-end));
   transition: width 0.3s ease;
 }
 
@@ -152,18 +162,20 @@ p {
 }
 
 .icon-arrow {
-  background: linear-gradient(to right, var(--orange-start), var(--orange-end));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  opacity: 0;
+  color: var(--accent-cyan);
+  background: none;
+  -webkit-text-fill-color: initial; 
+  opacity: 0.8;
   transform: translateX(-10px);
   transition: all 0.3s ease;
+  font-weight: bold;
 }
 
 .project-card:hover .icon-arrow {
   opacity: 1;
   transform: translateX(0);
+  color: var(--accent-cyan);
+  text-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
 }
 
 /* Custom Cursor Styles */
