@@ -34,19 +34,25 @@
 }
 
 body {
-  font-family: "SF Pro Display", "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
   background: linear-gradient(160deg, var(--bg-gradient-start) 0%, var(--bg-card) 50%, var(--bg-gradient-end) 100%);
   margin: 0;
   padding: 0;
   min-height: 100vh;
   color: var(--text-light);
   cursor: none; /* Hide default cursor */
+  line-height: 1.6; /* Improved readability */
+  letter-spacing: -0.01em; /* Modern snug fit */
 }
 
 /* Ensure links still show pointer if we want, or keep hidden? 
    Usually if custom cursor is used, we hide default everywhere. */
 a, button {
   cursor: none; 
+}
+
+code, pre {
+  font-family: "JetBrains Mono", monospace;
 }
 
 .container {
@@ -57,14 +63,15 @@ a, button {
 
 header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem; /* Increased whitespace for hierarchy */
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.5rem; /* Larger, more impactful hero heading (was 3rem) */
   font-weight: 800;
-  letter-spacing: -1px;
-  margin-bottom: 1rem;
+  letter-spacing: -0.03em; /* Tighter letter spacing for large text */
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
   background: linear-gradient(to right, var(--orange-start), var(--orange-mid), var(--orange-end));
   background-clip: text;
   -webkit-background-clip: text;
@@ -74,7 +81,9 @@ h1 {
 p {
   color: var(--text-muted);
   font-size: 1.25rem;
-  margin: 0;
+  font-weight: 300; /* Lighter weight for meta/body text */
+  margin: 0 auto;
+  max-width: 65ch; /* Optimal reading width limitation */
 }
 
 .project-grid {
@@ -126,7 +135,7 @@ p {
   color: var(--text-light);
   text-decoration: none;
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 500; /* Medium weight for links */
   height: 100%;
   position: relative;
   z-index: 1;
