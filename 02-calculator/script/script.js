@@ -1,22 +1,21 @@
-let calculation = localStorage.getItem("calculation") || "";
+let calculation = localStorage.getItem("calculation") || ""; // Load saved calculation or start with an empty string
 
 function updateDisplay() {
-  document.getElementById("display").textContent = calculation;
-  document.getElementById("display").style.color = "white";
+  document.getElementById("display").textContent = calculation; // Update the display with the current calculation
 }
 
 function saveCalculation() {
   localStorage.setItem("calculation", calculation);
 }
 
-function isOperator(value) {
+function isOperator(value) { // Check if the value is an operator (with spaces around it)
   return (
     value === " + " || value === " - " || value === " * " || value === " / "
   );
 }
 
-function getCurrentNumber() {
-  const parts = calculation.split(/ \+ | - | \* | \/ /);
+function getCurrentNumber() { // Get the current number from the calculation by splitting the calculation string at operators and returning the last part
+  const parts = calculation.split(/ \+ | \- | \* | \/ /);
   return parts[parts.length - 1] || "";
 }
 
