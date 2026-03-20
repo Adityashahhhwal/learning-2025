@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style/style.css">
+  <script src="script/script.js" defer></script> <!-- Link to external JS file -->
 </head>
-
 <body>
-  <main class="calculator">
+  <main class="calculator"> 
     <p id="display"></p>
     <p>
       <button onclick="addToCalculation('1')">1</button>
@@ -19,7 +19,7 @@
       <button onclick="addToCalculation('3')">3</button>
       <button class="operator" onclick="addToCalculation(' + ')">+</button>
     </p>
-
+ 
     <p>
       <button onclick="addToCalculation('4')">4</button>
       <button onclick="addToCalculation('5')">5</button>
@@ -40,12 +40,8 @@
       <button class="operator" onclick="addToCalculation(' / ')">/</button>
       <button class="operator" id="equals" onclick="calculateResult()">=</button> <!-- Calculate Result -->
     </p>
-
+    
     <button class="clear-button" onclick="clearCalculation()">CLEAR</button>
   </main>
-
-
-  <script src="script/script.js"></script> <!-- Link to external JS file -->
 </body>
-
 </html>

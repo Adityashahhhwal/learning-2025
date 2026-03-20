@@ -1,81 +1,232 @@
+/* ==================== CSS CUSTOM PROPERTIES ==================== */
+:root {
+  /* Color Palette */
+  --clr-bg-primary: hsl(0, 0%, 12%);
+  --clr-bg-secondary: hsl(0, 0%, 13%);
+  --clr-bg-button: hsl(0, 0%, 20%);
+  --clr-bg-operator: hsl(28, 100%, 50%);
+  --clr-bg-equals: hsl(35, 77%, 65%);
+  --clr-bg-clear: hsl(0, 0%, 96%);
+
+  --clr-text-primary: hsl(0, 0%, 100%);
+  --clr-text-secondary: hsl(0, 0%, 20%);
+  --clr-text-display: hsl(0, 27%, 98%);
+
+  /* Spacing */
+  --space-xs: 0.625rem;
+  --space-sm: 1.25rem;
+  --space-md: 1.25rem;
+
+  /* Sizing */
+  --button-size: clamp(3.75rem, 15vw, 5rem);
+  --button-font: clamp(1.5rem, 6vw, 2rem);
+  --display-font: clamp(1.75rem, 8vw, 2.5rem);
+  --clear-font: clamp(1.125rem, 5vw, 1.5rem);
+
+  /* Border Radius */
+  --radius-sm: 1.25rem;
+  --radius-md: 1.5625rem;
+  --radius-full: 50%;
+
+  /* Shadows */
+  --shadow-inset: inset 0 0 0.625rem hsl(0, 0%, 0%, 0.5);
+  --shadow-outer: 0 0.3125rem 0.9375rem hsl(0, 0%, 0%, 0.3);
+  --shadow-button: 0 0.25rem 0.5rem hsl(0, 0%, 0%, 0.2);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==================== RESET & BASE STYLES ==================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #1e1e1e; /* Dark background for the entire page */
-  font-family: 'Ubuntu Mono', monospace;
-  color: white;
   margin: 0;
-  min-height: 90vh;
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  padding: 20px;
+  min-block-size: 90vh;
+  padding-block: 1.25rem;
+  padding-inline: 1.25rem;
+
+  display: grid;
+  place-items: center;
+
+  font-family: 'Ubuntu Mono', monospace;
+  color: var(--clr-text-primary);
+  background-color: var(--clr-bg-primary);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ==================== CALCULATOR CONTAINER ==================== */
 .calculator {
-  width: min(92vw, 380px);
-  background-color: #222222; /* Darker gray for calculator background */
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5),
-    0 5px 15px rgba(0, 0, 0, 0.3); /* Inner and outer shadow for depth */
+  inline-size: min(calc(100vw - 2.5rem), 23.75rem);
+  padding-block: var(--space-md);
+  padding-inline: var(--space-md);
+
+  background-color: var(--clr-bg-secondary);
+  border-radius: var(--space-md);
+  box-shadow: var(--shadow-inset), var(--shadow-outer);
+
+  container-type: inline-size;
 }
 
+/* ==================== DISPLAY ==================== */
+#display {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  min-block-size: 3.75rem;
+  margin-block-start: 0;
+  margin-block-end: var(--space-xs);
+  padding-block-end: var(--space-xs);
+  padding-inline: 0.5rem;
+
+  font-size: var(--display-font);
+  color: var(--clr-text-display);
+  border-block-end: 0.125rem solid var(--clr-bg-primary);
+
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /* Smooth scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--clr-bg-button) transparent;
+
+  &::-webkit-scrollbar {
+    block-size: 0.25rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--clr-bg-button);
+    border-radius: 0.125rem;
+  }
+}
+
+/* ==================== BUTTON ROWS ==================== */
 p {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 0 0 10px;
-  color: white;
+  gap: var(--space-xs);
+  margin-block: 0;
+  margin-block-end: var(--space-xs);
+  margin-inline: 0;
 }
- 
+
+/* ==================== BUTTONS ==================== */
 button {
   flex: 1;
-  width: auto;
-  min-height: 60px;
-  aspect-ratio: 1 / 1;
+  min-block-size: var(--button-size);
+  aspect-ratio: 1;
+
   font-family: inherit;
-  font-size: clamp(24px, 6vw, 32px);
-  margin: 0;
-  border-radius: 50%;
+  font-size: var(--button-font);
+  color: var(--clr-text-primary);
+
+  background-color: var(--clr-bg-button);
   border: none;
-  background-color: #333333; /* Dark gray for numbers */
-  color: white;
+  border-radius: var(--radius-full);
   cursor: pointer;
+
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    filter var(--transition-base);
+
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &:where(:hover, :focus-visible) {
+    filter: brightness(1.2);
+    box-shadow: var(--shadow-button);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    filter: brightness(0.9);
+  }
+
+  &:focus-visible {
+    outline: 0.125rem solid var(--clr-bg-operator);
+    outline-offset: 0.125rem;
+  }
 }
 
+/* ==================== OPERATOR BUTTONS ==================== */
 .operator {
-  background-color: #ff9500; /* Orange for operators */
-  color: white;
+  background-color: var(--clr-bg-operator);
+  font-weight: 500;
+
+  &:where(:hover, :focus-visible) {
+    filter: brightness(1.15) saturate(1.1);
+  }
 }
 
+/* ==================== EQUALS BUTTON ==================== */
+#equals {
+  background-color: var(--clr-bg-equals);
+  color: var(--clr-text-secondary);
+  font-weight: 500;
+}
+
+/* ==================== CLEAR BUTTON ==================== */
 .clear-button {
   display: flex;
-  font-family: "ubuntu mono", monospace;
-  align-items: center; 
-  font-weight: 700;
-  justify-content: center;  
-  margin: 20px auto;
-  min-height: 50px;
-  width: min(38%, 160px);
+  align-items: center;
+  justify-content: center;
+
+  inline-size: min(38%, 10rem);
+  min-block-size: 3.125rem;
   aspect-ratio: auto;
-  font-size: clamp(18px, 5vw, 24px);
-  padding: 0;
-  border-radius: 25px;
-  background-color: #f5f2f2; /* Light gray for clear */
-  color: #333333;
+  margin-block-start: var(--space-md);
+  margin-inline: auto;
+
+  font-weight: 700;
+  font-size: var(--clear-font);
+  color: var(--clr-text-secondary);
+
+  background-color: var(--clr-bg-clear);
+  border-radius: var(--radius-md);
+
+  &:where(:hover, :focus-visible) {
+    filter: brightness(0.95);
+  }
+
+  &:active {
+    filter: brightness(0.85);
+  }
 }
 
-#equals {
-  background-color: hsl(35, 77%, 65%); /* Orange for equals button */
-  color: #242323;
-  font-weight: 500;
-  font-size: clamp(24px, 6vw, 32px);
+/* ==================== ACCESSIBILITY ==================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-#display {
-  font-size: clamp(28px, 8vw, 40px);
-  min-height: 60px;
-  margin-top: 0;
-  color: hsl(0, 27%, 98%);
-  justify-content: flex-end;
-  border-bottom: #1e1e1e 2px solid;
+/* ==================== PRINT STYLES ==================== */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  .calculator {
+    box-shadow: none;
+    border: 0.0625rem solid black;
+  }
 }
